@@ -18,5 +18,12 @@
 <ion-content>
   <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
 
-  <app-discover-card></app-discover-card>
+  <ion-grid>
+    <ion-row *ngFor="let category of categories">
+      <ion-col>
+        <ion-text>{{category.name}}</ion-text>
+        <app-discover-card></app-discover-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
