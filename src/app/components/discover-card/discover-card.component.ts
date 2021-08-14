@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discover-card.component.scss'],
 })
 export class DiscoverCardComponent implements OnInit {
+  slideOpts = {
+    loop: true,
+  };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
-
 }
