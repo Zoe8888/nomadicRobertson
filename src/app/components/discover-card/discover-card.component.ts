@@ -7,10 +7,6 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DiscoverCardComponent implements OnInit {
   @Input() slides: any[];
-  slideOpts = {
-    loop: true,
-    slidesPerView: 1.5,
-  };
 
   constructor() {}
 

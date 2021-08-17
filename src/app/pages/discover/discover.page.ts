@@ -10,6 +10,10 @@ export class DiscoverPage implements OnInit {
     { name: 'accomodations', items: [] },
     { name: 'wineries', items: [] },
   ];
+  slideOpts = {
+    loop: true,
+    slidesPerView: 1.5,
+  };
 
   constructor() {}
 

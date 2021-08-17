@@ -29,7 +29,11 @@
     <ion-row *ngFor="let category of categories">
       <ion-col>
         <ion-text>{{category.name}}</ion-text>
-        <app-discover-card></app-discover-card>
+        <ion-slides [options]="slideOpts">
+          <ion-slide>
+            <app-discover-card></app-discover-card>
+          </ion-slide>
+        </ion-slides>
       </ion-col>
     </ion-row>
   </ion-grid>
