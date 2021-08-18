@@ -1,6 +1,22 @@
-<ion-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Promotions</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"> </ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
   <ion-toolbar>
-    <ion-title>promotions</ion-title>
+    <ion-chip slot="start">
+      <ion-icon name="funnel"></ion-icon>
+      <ion-label>Filter</ion-label>
+    </ion-chip>
+    <ion-text slot="end">Expiring</ion-text>
+    <ion-toggle slot="end"></ion-toggle>
   </ion-toolbar>
 </ion-header>
 
