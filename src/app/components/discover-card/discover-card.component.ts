@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./discover-card.component.scss'],
 })
 export class DiscoverCardComponent implements OnInit {
-  @Input() slides: any[];
+  @Input() text: any[];
 
   constructor() {}
 

@@ -32,6 +32,11 @@ const routes: Routes = [
           import('../liked/liked.module').then((m) => m.LikedPageModule),
       },
       {
+        path: 'main',
+        loadChildren: () =>
+          import('../main/main.module').then((m) => m.MainPageModule),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full',

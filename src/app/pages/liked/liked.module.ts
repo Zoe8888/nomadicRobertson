@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { LikedPageRoutingModule } from './liked-routing.module';
-
 import { LikedPage } from './liked.page';
 
 @NgModule({
@@ -13,8 +11,9 @@ import { LikedPage } from './liked.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    LikedPageRoutingModule
+    LikedPageRoutingModule,
+    SharedModule,
   ],
-  declarations: [LikedPage]
+  declarations: [LikedPage],
 })
 export class LikedPageModule {}

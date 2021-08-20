@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Paarl</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"> </ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="relative">
+    <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
+    <ion-toolbar class="banner absolute bottom-1.5">
+      <ion-buttons slot="start">
+        <ion-button color="white">
+          <ion-icon slot="icon-only" name="alert-circle-outline"> </ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button color="white">
+          <ion-icon slot="icon-only" name="share-social-outline"> </ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+  <ion-toolbar color="primary">
+    <ion-title>Paarl Tourism</ion-title>
+  </ion-toolbar>
+  <ion-accordion-group>
+    <ion-accordion [value]="section.title" *ngFor="let section of sections">
+      <ion-item slot="header">
+        <ion-icon [name]="section.icon" slot="start"></ion-icon>
+        <ion-label>{{section.title}}</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Red</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Green</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Blue</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

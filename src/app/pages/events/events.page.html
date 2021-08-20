@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>events</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Events</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications"> </ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list lines="full">
+    <ion-list-header>
+      <ion-label>Coming up!</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let category of [1,2,3,4]">
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>
+        <h2>FAther's day</h2>
+        <p>Something here</p>
+      </ion-label>
+      <ion-note slot="end">14:00</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
