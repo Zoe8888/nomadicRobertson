@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discover.page.scss'],
 })
 export class DiscoverPage implements OnInit {
+  categories = [
+    { name: 'accomodations', items: [] },
+    { name: 'wineries', items: [] },
+  ];
+  slideOpts = {
+    loop: true,
+    slidesPerView: 1.5,
+  };
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
