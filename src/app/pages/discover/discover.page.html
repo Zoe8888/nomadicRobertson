@@ -16,22 +16,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="top" horizontal="end">
-    <ion-fab-button>
-      <ion-icon name="medical"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <div>
+  <div class="relative mb-6">
+    <ion-grid class="absolute">
+      <ion-row>
+        <ion-col size="auto">
+          <ion-card class="ion-no-margin">
+            <ion-item lines="none" color="primary">
+              <ion-icon
+                slot="start"
+                name="partly-sunny"
+                color="warning"
+              ></ion-icon>
+              <ion-label>
+                <h2>12°C</h2>
+                <p>clear</p>
+              </ion-label>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-fab vertical="top" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="medical"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
     <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
-    <ion-searchbar></ion-searchbar>
+    <ion-toolbar class="search absolute -bottom-6">
+      <ion-searchbar color="light" class="!pb-0 shadow-md"></ion-searchbar>
+    </ion-toolbar>
   </div>
   <div class="px-1">
     <app-discover-grid></app-discover-grid>
   </div>
-  <div class="ion-padding-horizontal">
-    <ion-button expand="block" shape="round">TOP ATTRACTIONS</ion-button>
+  <div class="m-2">
+    <ion-button expand="block" size="small">TOP ATTRACTIONS</ion-button>
   </div>
-  <h4 class="ion-text-center">What's New</h4>
+  <h5 class="whatsnew w-full text-center">
+    <span class="bg-white px-2.5">What's New</span>
+  </h5>
   <ion-grid>
     <ion-row *ngFor="let category of categories">
       <ion-col>
