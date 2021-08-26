@@ -17,13 +17,15 @@
     <ion-list-header>
       <ion-label>Coming up!</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let category of [].constructor(6)">
-      <ion-icon name="calendar" slot="start"></ion-icon>
-      <ion-label>
-        <h2>FAther's day</h2>
-        <p>Something here</p>
-      </ion-label>
-      <ion-note slot="end">14:00</ion-note>
-    </ion-item>
+    <ng-container *ngFor="let category of [].constructor(6)">
+      <ion-item routerLink="event-details">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        <ion-label>
+          <h2>FAther's day</h2>
+          <p>Something here</p>
+        </ion-label>
+        <ion-note slot="end">14:00</ion-note>
+      </ion-item>
+    </ng-container>
   </ion-list>
 </ion-content>
