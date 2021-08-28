@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 
 @Component({
   selector: 'app-discover',
@@ -15,7 +17,15 @@ export class DiscoverPage implements OnInit {
     slidesPerView: 1.5,
   };
 
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {}
+
+  async showAttractions() {
+    const modal = await this.modalCtrl.create({
+      component: TopAttractionsPage,
+    });
+
+    modal.present();
+  }
 }
