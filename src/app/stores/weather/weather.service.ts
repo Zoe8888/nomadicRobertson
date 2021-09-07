@@ -28,5 +28,25 @@ export class WeatherService {
       });
   }
 
-  getForecast() {}
+  async getForecast() {
+    return await this.http
+      .request(
+        'GET',
+        'https://api.openweathermap.org/data/2.5/forecast/daily',
+        {
+          lat: -33.715546,
+          lon: 18.966248,
+          units: 'metric',
+          cnt: 8,
+          appid: environment.opweather,
+        },
+        true
+      )
+      .then((forecast) => {
+        console.log(forecast);
+        if (forecast?.list) {
+          this.weatherStore.update({ forecast });
+        }
+      });
+  }
 }

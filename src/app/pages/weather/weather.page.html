@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>weather</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary">
+  <ion-grid
+    class="h-full ion-no-padding"
+    *ngIf="weather.forecast | async as forecast"
+  >
+    <ion-row class="h-full">
+      <ion-col
+        size="12"
+        *ngFor="let day of forecast?.list; first as isFirst; odd as isOdd"
+      >
+        <ng-container *ngIf="isFirst;else notFirst">
+          <ion-grid *ngIf="weather.today | async as today">
+            <ion-row>
+              <ion-col class="text-center">
+                <h3>Paarl's weather</h3>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-align-items-center">
+              <ion-col>
+                <ion-img
+                  [src]="'http://openweathermap.org/img/wn/'+today?.weather?.[0]?.icon+'@2x.png'"
+                ></ion-img>
+              </ion-col>
+              <ion-col class="text-center">
+                <p class="!font-bold m-0 !text-4xl">
+                  {{today?.main?.temp|number: '1.0-0'}}°C
+                </p>
+                <p class="m-0">{{today?.weather?.[0]?.description}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ng-container>
+        <ng-template #notFirst>
+          <ion-item lines="none" [color]="isOdd ? 'tertiary' : 'secondary'">
+            <ion-label>
+              <h2>{{(day?.dt * 1000) | date:'EEEE'}}</h2>
+            </ion-label>
+            <ion-thumbnail slot="end">
+              <ion-img
+                [src]="'http://openweathermap.org/img/wn/'+day?.weather?.[0]?.icon+'@2x.png'"
+              ></ion-img>
+            </ion-thumbnail>
+            <ion-text slot="end">{{day?.temp?.max|number: '1.0-0'}}°C</ion-text>
+            <ion-text slot="end">{{day?.temp?.min|number: '1.0-0'}}°C</ion-text>
+          </ion-item>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -3,7 +3,7 @@ import { Store, StoreConfig } from '@datorama/akita';
 
 export interface WeatherState {
   today: any;
-  forecast: any[] | null;
+  forecast: any;
 }
 
 export const createInitialState = (): WeatherState => ({

@@ -20,7 +20,7 @@
     <ion-grid class="absolute" *ngIf="weather.today | async as today">
       <ion-row>
         <ion-col size="auto">
-          <ion-card class="ion-no-margin">
+          <ion-card class="ion-no-margin" (click)="showWeather()">
             <ion-item lines="none" color="primary">
               <ion-avatar slot="start">
                 <ion-img
