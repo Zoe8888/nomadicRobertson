@@ -17,19 +17,25 @@
 
 <ion-content>
   <div class="relative mb-6">
-    <ion-grid class="absolute">
+    <ion-grid class="absolute" *ngIf="weather.today | async as today">
       <ion-row>
         <ion-col size="auto">
           <ion-card class="ion-no-margin">
             <ion-item lines="none" color="primary">
-              <ion-icon
-                slot="start"
-                name="partly-sunny"
-                color="warning"
-              ></ion-icon>
-              <ion-label>
-                <h2>12°C</h2>
-                <p>clear</p>
+              <ion-avatar slot="start">
+                <ion-img
+                  [src]="'http://openweathermap.org/img/wn/'+today?.weather?.[0]?.icon+'@2x.png'"
+                ></ion-img>
+              </ion-avatar>
+              <ion-label class="text-center">
+                <h2 class="!font-bold">
+                  {{today?.main?.temp|number: '1.0-0'}}°C
+                </h2>
+                <p>{{today?.weather?.[0]?.main}}</p>
+                <!-- <small>
+                  L: {{today?.main?.temp_min|number: '1.0-0'}} - H:
+                  {{today?.main?.temp_max|number: '1.0-0'}}
+                </small> -->
               </ion-label>
             </ion-item>
           </ion-card>
@@ -46,7 +52,7 @@
       <ion-searchbar color="light" class="!pb-0 shadow-md"></ion-searchbar>
     </ion-toolbar>
   </div>
-  <ion-card>
+  <ion-card *ngIf="false">
     <ion-list lines="full">
       <ion-item>
         <ion-avatar slot="start">

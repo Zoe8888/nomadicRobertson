@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { WeatherQuery } from 'src/app/stores/weather';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 
 @Component({
@@ -17,7 +18,10 @@ export class DiscoverPage implements OnInit {
     slidesPerView: 1.5,
   };
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(
+    private modalCtrl: ModalController,
+    public weather: WeatherQuery
+  ) {}
 
   ngOnInit() {}
 

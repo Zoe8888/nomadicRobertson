@@ -24,7 +24,7 @@ export class HttpService {
     method: 'GET' | 'POST',
     uri: string,
     params?: any,
-    ownUrl?: string
+    ownUrl?: boolean
   ) {
     const ha2 = Md5.hashStr(`${method}:${uri}`);
     const nonce = new Date().getTime();
@@ -32,11 +32,16 @@ export class HttpService {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const Authorization = `Digest username="${this.auth.username}",realm="${realm}", nonce="${nonce}",uri="${uri}",response="${response}"`;
     const url = ownUrl ? uri : `${base}${uri}`;
+
     const headers = {
-      'X-Concursive-Key': `key=${key}`,
-      Authorization,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'content-Type': 'application/json',
+      Authorization: '',
     };
+
+    if (!ownUrl) {
+      headers.Authorization = Authorization;
+      headers['X-Concursive-Key'] = `key=${key}`;
+    }
 
     const call: HttpOptions = { method, url, headers };
 
