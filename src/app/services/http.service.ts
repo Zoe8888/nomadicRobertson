@@ -20,13 +20,18 @@ export class HttpService {
     });
   }
 
-  async request(method, uri, params: any = {}) {
+  async request(
+    method: 'GET' | 'POST',
+    uri: string,
+    params?: any,
+    ownUrl?: string
+  ) {
     const ha2 = Md5.hashStr(`${method}:${uri}`);
     const nonce = new Date().getTime();
     const response = Md5.hashStr(`${this.auth.ha1}:${nonce}:${ha2}`);
     // eslint-disable-next-line @typescript-eslint/naming-convention
     const Authorization = `Digest username="${this.auth.username}",realm="${realm}", nonce="${nonce}",uri="${uri}",response="${response}"`;
-    const url = `${base}${uri}`;
+    const url = ownUrl ? uri : `${base}${uri}`;
     const headers = {
       'X-Concursive-Key': `key=${key}`,
       Authorization,
