@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { IonicSwiper, ModalController } from '@ionic/angular';
 import { WeatherQuery } from 'src/app/stores/weather';
+import SwiperCore from 'swiper';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
+
+SwiperCore.use([IonicSwiper]);
 
 @Component({
   selector: 'app-discover',
@@ -14,11 +17,6 @@ export class DiscoverPage implements OnInit {
     { name: 'accomodations', items: [] },
     { name: 'wineries', items: [] },
   ];
-  slideOpts = {
-    loop: true,
-    slidesPerView: 1.5,
-  };
-
   constructor(
     private modalCtrl: ModalController,
     public weather: WeatherQuery

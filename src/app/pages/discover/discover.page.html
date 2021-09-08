@@ -20,7 +20,11 @@
     <ion-grid class="absolute" *ngIf="weather.today | async as today">
       <ion-row>
         <ion-col size="auto">
-          <ion-card class="ion-no-margin" (click)="showWeather()">
+          <ion-card
+            class="ion-no-margin"
+            (click)="showWeather()"
+            color="primary"
+          >
             <ion-item lines="none" color="primary">
               <ion-avatar slot="start">
                 <ion-img
@@ -95,11 +99,11 @@
     <ion-row *ngFor="let category of categories">
       <ion-col>
         <ion-text>{{category.name}}</ion-text>
-        <ion-slides [options]="slideOpts">
-          <ion-slide>
+        <swiper [slidesPerView]="1.5">
+          <ng-template swiperSlide>
             <app-discover-card></app-discover-card>
-          </ion-slide>
-        </ion-slides>
+          </ng-template>
+        </swiper>
       </ion-col>
     </ion-row>
   </ion-grid>

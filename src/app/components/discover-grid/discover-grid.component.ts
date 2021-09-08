@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { IonicSwiper } from '@ionic/angular';
+import SwiperCore from 'swiper';
+
+SwiperCore.use([IonicSwiper]);
 
 @Component({
   selector: 'app-discover-grid',
@@ -32,10 +36,6 @@ export class DiscoverGridComponent implements OnInit {
       { title: 'More', icon: 'sparkles-outline' },
     ],
   ];
-  slideOpts = {
-    slidesPerView: 3.5,
-  };
-
   constructor() {}
 
   ngOnInit() {}
