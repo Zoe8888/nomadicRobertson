@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicSwiper, ModalController } from '@ionic/angular';
+import { AttractionService } from 'src/app/stores/attraction';
 import { WeatherQuery } from 'src/app/stores/weather';
 import SwiperCore from 'swiper';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
@@ -19,12 +20,16 @@ export class DiscoverPage implements OnInit {
   ];
   constructor(
     private modalCtrl: ModalController,
-    public weather: WeatherQuery
+    public weather: WeatherQuery,
+    private attractions: AttractionService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.attractions.getTop();
+  }
 
   async showAttractions() {
+    this.attractions.getTop();
     const modal = await this.modalCtrl.create({
       component: TopAttractionsPage,
     });
