@@ -4,6 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     AppRoutingModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule,
