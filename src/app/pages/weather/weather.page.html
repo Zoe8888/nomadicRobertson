@@ -5,7 +5,7 @@
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>weather</ion-title>
+    <ion-title>Paarl's weather</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -21,16 +21,12 @@
       >
         <ng-container *ngIf="isFirst;else notFirst">
           <ion-grid *ngIf="weather.today | async as today">
-            <ion-row>
-              <ion-col class="text-center">
-                <h3>Paarl's weather</h3>
-              </ion-col>
-            </ion-row>
             <ion-row class="ion-align-items-center">
-              <ion-col>
-                <ion-img
-                  [src]="'http://openweathermap.org/img/wn/'+today?.weather?.[0]?.icon+'@4x.png'"
-                ></ion-img>
+              <ion-col class="text-center">
+                <img
+                  width="96px"
+                  [src]="'assets/icon/weather/'+today?.weather?.[0]?.icon+'.png'"
+                />
               </ion-col>
               <ion-col class="text-center">
                 <p class="!font-bold m-0 !text-4xl">
@@ -44,15 +40,21 @@
         <ng-template #notFirst>
           <ion-item lines="none" [color]="isOdd ? 'tertiary' : 'secondary'">
             <ion-label>
-              <h2>{{(day?.dt * 1000) | date:'EEEE'}}</h2>
+              <ion-text color="white">
+                {{(day?.dt * 1000) | date:'EEEE'}}
+              </ion-text>
             </ion-label>
             <ion-thumbnail slot="end">
               <ion-img
-                [src]="'http://openweathermap.org/img/wn/'+day?.weather?.[0]?.icon+'@2x.png'"
+                [src]="'assets/icon/weather/'+day?.weather?.[0]?.icon+'.png'"
               ></ion-img>
             </ion-thumbnail>
-            <ion-text slot="end">{{day?.temp?.max|number: '1.0-0'}}°C</ion-text>
-            <ion-text slot="end">{{day?.temp?.min|number: '1.0-0'}}°C</ion-text>
+            <ion-text color="white" slot="end">
+              {{day?.temp?.max|number: '1.0-0'}}°C
+            </ion-text>
+            <ion-text color="white" slot="end">
+              {{day?.temp?.min|number: '1.0-0'}}°C
+            </ion-text>
           </ion-item>
         </ng-template>
       </ion-col>
