@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event-details',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-details.page.scss'],
 })
 export class EventDetailsPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  event: any;
+  constructor(private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(({ event }) => {
+      if (event) {
+        console.log(JSON.parse(event));
+        this.event = JSON.parse(event);
+      }
+    });
   }
 
+  ngOnInit() {}
 }

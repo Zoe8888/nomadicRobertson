@@ -14,11 +14,7 @@ const realm = environment.realm;
 export class HttpService {
   auth: any;
 
-  constructor(private userQuery: UserQuery) {
-    this.userQuery.select(['username', 'ha1']).subscribe((user) => {
-      this.auth = user;
-    });
-  }
+  constructor(private userQuery: UserQuery) {}
 
   async request(
     method: 'GET' | 'POST',
@@ -26,20 +22,21 @@ export class HttpService {
     params?: any,
     ownUrl?: boolean
   ) {
+    const { username, ha1 } = this.userQuery.getValue();
     const ha2 = Md5.hashStr(`${method}:${uri}`);
     const nonce = new Date().getTime();
-    const response = Md5.hashStr(`${this.auth.ha1}:${nonce}:${ha2}`);
+    const response = Md5.hashStr(`${ha1}:${nonce}:${ha2}`);
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const Authorization = `Digest username="${this.auth.username}",realm="${realm}", nonce="${nonce}",uri="${uri}",response="${response}"`;
+    const Authorization = `Digest username="${username}",realm="${realm}", nonce="${nonce}",uri="${uri}",response="${response}"`;
     const url = ownUrl ? uri : `${base}${uri}`;
 
     const headers = {
       'content-Type': 'application/json',
-      Authorization: '',
     };
 
     if (!ownUrl) {
-      headers.Authorization = Authorization;
+      // eslint-disable-next-line @typescript-eslint/dot-notation
+      headers['Authorization'] = Authorization;
       headers['X-Concursive-Key'] = `key=${key}`;
     }
 

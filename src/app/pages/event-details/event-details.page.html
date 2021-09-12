@@ -15,17 +15,22 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-item lines="none">
-      <ion-avatar slot="start">
-        <img
-          src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-        />
-      </ion-avatar>
+      <ion-thumbnail slot="start">
+        <img [src]="event?.eventImageUrl" />
+      </ion-thumbnail>
       <ion-label>
-        <h1>Good Father</h1>
-        <p>Something</p>
-        <small>it is what it is</small>
+        <h1>{{event?.title}}</h1>
+        <p>{{event?.location}}</p>
+        <small>{{event?.addressLine1}}</small>
       </ion-label>
-      <ion-icon slot="end" name="calendar-number-outline"></ion-icon>
+
+      <div class="calendar contents" slot="end">
+        <div class="date">
+          <div class="month">{{event?.startDate | date: 'MMM'}}</div>
+          <div class="day">{{event?.startDate | date: 'd'}}</div>
+          <div class="year">{{event?.startDate | date: 'YYYY'}}</div>
+        </div>
+      </div>
     </ion-item>
   </ion-toolbar>
   <ion-toolbar class="relative w-full ion-no-padding">

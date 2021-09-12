@@ -17,14 +17,27 @@
     <ion-list-header>
       <ion-label>Coming up!</ion-label>
     </ion-list-header>
-    <ng-container *ngFor="let category of [].constructor(6)">
-      <ion-item routerLink="event-details">
-        <ion-icon name="calendar" slot="start"></ion-icon>
+    <ng-container *ngFor="let event of eventQuery.list | async">
+      <ion-item
+        routerLink="event-details"
+        [queryParams]="{event:event| json}"
+        detail="false"
+      >
+        <div class="calendar" slot="start">
+          <div class="date">
+            <div class="month">{{event.startDate | date: 'MMM'}}</div>
+            <div class="day">{{event.startDate | date: 'd'}}</div>
+            <div class="year">{{event.startDate | date: 'YYYY'}}</div>
+          </div>
+        </div>
         <ion-label>
-          <h2>FAther's day</h2>
-          <p>Something here</p>
+          <h2>{{event?.title}}</h2>
+          <p>{{event.location}}</p>
         </ion-label>
-        <ion-note slot="end">14:00</ion-note>
+        <ion-text slot="end">
+          <p class="m-0 text-xs">{{event.startDate | date: 'shortTime'}}</p>
+          <p class="m-0 text-xs">{{event.endDate | date: 'shortTime'}}</p>
+        </ion-text>
       </ion-item>
     </ng-container>
   </ion-list>
