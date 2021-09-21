@@ -18,6 +18,7 @@ export class DiscoverPage implements OnInit {
     { name: 'accomodations', items: [] },
     { name: 'wineries', items: [] },
   ];
+  ready: boolean;
   constructor(
     private modalCtrl: ModalController,
     public weather: WeatherQuery,
@@ -26,6 +27,10 @@ export class DiscoverPage implements OnInit {
 
   ngOnInit() {
     this.attractions.getTop();
+  }
+
+  ionViewDidEnter() {
+    this.ready = true;
   }
 
   async showAttractions() {

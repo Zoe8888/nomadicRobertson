@@ -38,7 +38,7 @@ export class MainPage implements OnInit {
   async showAbout() {
     const about: any = this.paarlQuery.getValue().about;
     Swal.fire({
-      title: 'Your work has been saved',
+      title: 'About Paarl',
       html: about?.html,
       showConfirmButton: false,
       showCloseButton: true,

@@ -10,6 +10,7 @@ export class PaarlService {
     return await this.http
       .request('GET', 'wiki', {
         profile: 'paarl-paarl',
+        subject: 'About Paarl',
         format: 'json',
       })
       .then((result) => {

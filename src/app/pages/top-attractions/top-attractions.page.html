@@ -20,7 +20,10 @@
             </ion-item>
 
             <div slot="content" class="bg-primary p-2">
-              <ion-card class="p-2 m-0"> {{item?.description}} </ion-card>
+              <ion-card class="p-2 m-0">
+                <ion-img [src]="item?.image200Url"></ion-img>
+                {{item?.description}}
+              </ion-card>
             </div>
           </ion-accordion>
         </ion-col>
