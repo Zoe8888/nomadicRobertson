@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EventService } from 'src/app/stores/event';
 
 @Component({
   selector: 'app-event-details',
@@ -8,11 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventDetailsPage implements OnInit {
   event: any;
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService
+  ) {
     this.route.queryParams.subscribe(({ event }) => {
       if (event) {
         console.log(JSON.parse(event));
         this.event = JSON.parse(event);
+        this.eventService.getEvent(this.event.id);
       }
     });
   }

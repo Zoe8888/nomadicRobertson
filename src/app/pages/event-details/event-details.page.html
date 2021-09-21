@@ -15,11 +15,11 @@
   </ion-toolbar>
   <ion-toolbar>
     <ion-item lines="none">
-      <ion-thumbnail slot="start">
-        <img [src]="event?.eventImageUrl" />
-      </ion-thumbnail>
+      <ion-avatar slot="start">
+        <img [src]="event?.profileImageUrl" />
+      </ion-avatar>
       <ion-label>
-        <h1>{{event?.title}}</h1>
+        <h4>{{event?.title}}</h4>
         <p>{{event?.location}}</p>
         <small>{{event?.addressLine1}}</small>
       </ion-label>
@@ -34,7 +34,7 @@
     </ion-item>
   </ion-toolbar>
   <ion-toolbar class="relative w-full ion-no-padding">
-    <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
+    <ion-img [src]="event?.eventImageUrl" class="banner"></ion-img>
     <ion-toolbar class="banner absolute bottom-1.5">
       <ion-buttons slot="end">
         <ion-button color="white">

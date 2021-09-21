@@ -26,4 +26,12 @@ export class EventService {
         }
       });
   }
+
+  async getEvent(id) {
+    return await this.http
+      .request('GET', `event/${id}`, { format: 'json' })
+      .then((result) => {
+        console.log(result);
+      });
+  }
 }
