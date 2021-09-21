@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LikedQuery, LikedService } from 'src/app/stores/liked';
 
 @Component({
   selector: 'app-liked',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liked.page.scss'],
 })
 export class LikedPage implements OnInit {
+  constructor(
+    private likedService: LikedService,
+    public likedQuery: LikedQuery
+  ) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    await this.likedService.getList();
   }
-
 }

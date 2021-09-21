@@ -24,9 +24,14 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row *ngFor="let category of [].constructor(6)">
+    <ion-row *ngFor="let profile of likedQuery.selectAll() | async">
       <ion-col>
-        <app-discover-card></app-discover-card>
+        <ion-card class="ion-no-margin" style="margin: 4px; text-align: left">
+          <img [src]="profile?.image200Url" width="100%" />
+          <ion-item lines="none">
+            <ion-label>{{profile?.title}}</ion-label>
+          </ion-item>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
