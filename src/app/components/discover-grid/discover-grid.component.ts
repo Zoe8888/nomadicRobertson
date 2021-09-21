@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicSwiper } from '@ionic/angular';
+import { IonicSwiper, NavController } from '@ionic/angular';
 import SwiperCore from 'swiper';
 
 SwiperCore.use([IonicSwiper]);
@@ -36,7 +36,13 @@ export class DiscoverGridComponent implements OnInit {
       { title: 'More', icon: 'sparkles-outline' },
     ],
   ];
-  constructor() {}
+  constructor(private navCtrl: NavController) {}
 
   ngOnInit() {}
+
+  goTo(business) {
+    this.navCtrl.navigateForward('business', {
+      state: { business },
+    });
+  }
 }
