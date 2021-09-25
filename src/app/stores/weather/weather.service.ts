@@ -21,7 +21,6 @@ export class WeatherService {
         true
       )
       .then((today) => {
-        console.log(today);
         if (today?.main) {
           this.weatherStore.update({ today });
         }
@@ -43,7 +42,6 @@ export class WeatherService {
         true
       )
       .then((forecast) => {
-        console.log(forecast);
         if (forecast?.list) {
           this.weatherStore.update({ forecast });
         }

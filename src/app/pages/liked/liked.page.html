@@ -26,7 +26,7 @@
   <ion-grid>
     <ion-row *ngFor="let profile of likedQuery.selectAll() | async">
       <ion-col>
-        <ion-card class="ion-no-margin" style="margin: 4px; text-align: left">
+        <ion-card class="ion-no-margin">
           <img [src]="profile?.image200Url" width="100%" />
           <ion-item lines="none">
             <ion-label>{{profile?.title}}</ion-label>

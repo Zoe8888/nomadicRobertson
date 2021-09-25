@@ -15,7 +15,6 @@ export class EventDetailsPage implements OnInit {
   ) {
     this.route.queryParams.subscribe(({ event }) => {
       if (event) {
-        console.log(JSON.parse(event));
         this.event = JSON.parse(event);
         this.eventService.getEvent(this.event.id);
       }

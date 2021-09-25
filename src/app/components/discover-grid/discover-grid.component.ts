@@ -12,7 +12,7 @@ SwiperCore.use([IonicSwiper]);
 export class DiscoverGridComponent implements OnInit {
   groups = [
     [
-      { title: 'Accomodations', icon: 'bed-outline' },
+      { title: 'Accommodation', icon: 'bed-outline' },
       { title: 'Adventure', icon: 'bicycle-outline' },
     ],
     [
