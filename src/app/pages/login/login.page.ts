@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/stores/user';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -32,11 +36,16 @@ export class LoginPage implements OnInit {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.loginForm.markAllAsTouched();
 
     if (this.loginForm.invalid) {
       return;
     }
+
+    await this.userService.login(
+      this.f.email.value.trim(),
+      this.f.password.value
+    );
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserQuery } from './stores/user';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  menu = [
+    {
+      title: 'Profile',
+      path: '',
+      icon: 'person',
+    },
+    {
+      title: 'Settings',
+      path: '',
+      icon: 'settings',
+    },
+  ];
+  constructor(public userQuery: UserQuery) {}
 }

@@ -15,7 +15,6 @@ export class UserService {
   ) {}
 
   async login(username, password) {
-    // this.sharedService.presentLoading();
     const ha1 = Md5.hashStr(
       `${username}:${environment.realm}:${password}`
     ).toString();
@@ -33,7 +32,6 @@ export class UserService {
       })
       .catch((error) => {
         console.log(error);
-        // this.sharedService.presentError('Error', error.error)
         this.userStore.reset();
         return error;
       })
