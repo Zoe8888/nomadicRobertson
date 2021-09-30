@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserQuery } from './stores/user';
+import { UserQuery, UserService } from './stores/user';
 
 @Component({
   selector: 'app-root',
@@ -19,5 +19,9 @@ export class AppComponent {
       icon: 'settings',
     },
   ];
-  constructor(public userQuery: UserQuery) {}
+  constructor(public userQuery: UserQuery, private userService: UserService) {}
+
+  logout() {
+    this.userService.logout();
+  }
 }

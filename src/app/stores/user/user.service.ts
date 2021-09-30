@@ -20,20 +20,22 @@ export class UserService {
     ).toString();
     this.userStore.update({ username, ha1 });
     return await this.http
-      .request('GET', 'site')
+      .request('GET', 'site', { format: 'json' })
       .then((result) => {
-        resetStores({ exclude: ['user'] });
-        const data = result[0].objectList[0];
-        this.userStore.update({ data });
-        if (!data.isGuest) {
-          // this.sharedService.presentToast(`${data.firstName} has successfuly logged in`, 'success')
+        console.log(result);
+        const { status, objectList } = result[0];
+        if (status.code === 0) {
+          resetStores({ exclude: ['user'] });
+          const data = objectList[0];
+          this.userStore.update({ data });
+          return true;
         }
-        return result[0];
+        return false;
       })
       .catch((error) => {
         console.log(error);
         this.userStore.reset();
-        return error;
+        return false;
       })
       .finally(() => {
         // this.sharedService.dismissLoading();
@@ -42,6 +44,6 @@ export class UserService {
 
   logout() {
     resetStores();
-    this.navCtrl.navigateRoot('home');
+    this.navCtrl.navigateRoot('');
   }
 }

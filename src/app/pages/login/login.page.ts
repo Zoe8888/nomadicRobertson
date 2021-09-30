@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 import { UserService } from 'src/app/stores/user';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -43,9 +45,13 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    await this.userService.login(
-      this.f.email.value.trim(),
-      this.f.password.value
-    );
+    await this.userService
+      .login(this.f.email.value.trim(), this.f.password.value)
+      .then((success) => {
+        console.log(success);
+        if (success) {
+          this.navCtrl.navigateBack('');
+        }
+      });
   }
 }
