@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PromotionQuery, PromotionService } from 'src/app/stores/promotion';
 
 @Component({
   selector: 'app-promotions',
@@ -6,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./promotions.page.scss'],
 })
 export class PromotionsPage implements OnInit {
-  constructor() {}
+  constructor(
+    private promotionService: PromotionService,
+    public promotionQuery: PromotionQuery
+  ) {}
 
   ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.promotionService.getList();
+  }
 }

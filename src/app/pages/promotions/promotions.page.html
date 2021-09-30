@@ -19,10 +19,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row *ngFor="let category of [].constructor(6)">
+  <ion-grid *ngIf="promotionQuery.selectAll() | async as promotions">
+    <ion-row *ngFor="let promotion of promotions">
       <ion-col>
-        <app-discover-card></app-discover-card>
+        <ion-card class="ion-no-margin">
+          <img [src]="promotion?.publishedByImageUrl" width="100%" />
+          <ion-item lines="none">
+            <ion-label class="ion-text-wrap">
+              <p class="text-sm">{{promotion?.subject}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
