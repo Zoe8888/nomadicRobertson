@@ -12,7 +12,7 @@ export const createInitialState = (): WeatherState => ({
 });
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'weather' })
+@StoreConfig({ name: 'weather', resettable: false })
 export class WeatherStore extends Store<WeatherState> {
   constructor() {
     super(createInitialState());
