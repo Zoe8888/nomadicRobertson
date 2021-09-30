@@ -16,6 +16,12 @@ export class LikedService {
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
           this.likedStore.upsertMany(result[0].objectList);
+          this.likedStore.remove(
+            (entity) =>
+              !result[0].objectList.some(
+                (newEntity) => newEntity.id === entity.id
+              )
+          );
         }
       });
   }

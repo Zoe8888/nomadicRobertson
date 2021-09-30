@@ -12,7 +12,9 @@ export class LikedPage implements OnInit {
     public likedQuery: LikedQuery
   ) {}
 
-  async ngOnInit() {
-    await this.likedService.getList();
+  ngOnInit() {}
+
+  ionViewWillEnter() {
+    this.likedService.getList();
   }
 }
