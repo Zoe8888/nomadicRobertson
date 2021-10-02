@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
-import { UserService } from 'src/app/stores/user';
+import { UserQuery, UserService } from 'src/app/stores/user';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,
+    public userQuery: UserQuery,
     private navCtrl: NavController
   ) {}
 

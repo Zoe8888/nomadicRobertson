@@ -12,9 +12,12 @@ export class UserService {
     private userStore: UserStore,
     private http: HttpService,
     public navCtrl: NavController
-  ) {}
+  ) {
+    this.userStore.setLoading(false);
+  }
 
   async login(username, password) {
+    this.userStore.setLoading(true);
     const ha1 = Md5.hashStr(
       `${username}:${environment.realm}:${password}`
     ).toString();
@@ -33,12 +36,11 @@ export class UserService {
         return false;
       })
       .catch((error) => {
-        console.log(error);
         this.userStore.reset();
         return false;
       })
       .finally(() => {
-        // this.sharedService.dismissLoading();
+        this.userStore.setLoading(false);
       });
   }
 

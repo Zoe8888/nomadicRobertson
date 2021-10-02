@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from 'src/app/stores/weather';
 
 @Component({
   selector: 'app-tabs',
@@ -7,9 +6,7 @@ import { WeatherService } from 'src/app/stores/weather';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-  constructor(private weather: WeatherService) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.weather.getToday();
-  }
+  ngOnInit() {}
 }

@@ -23,17 +23,23 @@
             placeholder="Password"
           ></ion-input>
           <p class="text-right text-sm mb-5">Forgot password?</p>
+
           <ion-button
             type="submit"
             expand="block"
             color="white"
             class="ion-margin-top mx-0 my-5"
-            >LOGIN
+          >
+            <ion-spinner
+              color="dark"
+              *ngIf="userQuery.selectLoading() | async; else notLoading"
+            ></ion-spinner>
+            <ng-template #notLoading>LOGIN</ng-template>
           </ion-button>
-          <p class="text-xs text-center">
+          <!-- <p class="text-xs text-center">
             You don't have a nomadicways.travel account?
             <span class="font-bold">Sign up</span>
-          </p>
+          </p> -->
         </form>
       </ion-col>
       <ion-col size="12">

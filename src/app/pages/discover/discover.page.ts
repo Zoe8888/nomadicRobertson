@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicSwiper, ModalController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
-import { WeatherQuery } from 'src/app/stores/weather';
+import { BlogQuery, BlogService } from 'src/app/stores/blog';
+import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
 import SwiperCore from 'swiper';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
@@ -22,11 +23,19 @@ export class DiscoverPage implements OnInit {
   constructor(
     private modalCtrl: ModalController,
     public weather: WeatherQuery,
-    private attractions: AttractionService
+    private attractions: AttractionService,
+    private weatherService: WeatherService,
+    private blogService: BlogService,
+    public blogQuery: BlogQuery
   ) {}
 
   ngOnInit() {
     this.attractions.getTop();
+  }
+
+  ionViewWillEnter() {
+    this.weatherService.getToday();
+    this.blogService.getList();
   }
 
   ionViewDidEnter() {
