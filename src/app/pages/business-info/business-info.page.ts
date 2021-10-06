@@ -34,7 +34,6 @@ export class BusinessInfoPage implements OnInit {
 
   ngOnInit() {
     const { state } = this.router.getCurrentNavigation().extras;
-    console.log(state.profile);
     this.profile = state.profile;
   }
 }

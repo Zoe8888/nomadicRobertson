@@ -8,24 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="relative">
-    <ion-img [src]="profile?.imageUrl" class="banner"></ion-img>
-    <ion-toolbar class="banner absolute bottom-1.5">
-      <ion-buttons slot="start">
-        <ion-button color="white">
-          <ion-icon slot="icon-only" name="alert-circle-outline"> </ion-icon>
-        </ion-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button color="white">
-          <ion-icon slot="icon-only" name="share-social-outline"> </ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </div>
-  <ion-toolbar color="primary">
-    <ion-title>{{profile?.title}}</ion-title>
-  </ion-toolbar>
+  <app-profile-details-header [profile]="profile"></app-profile-details-header>
   <ion-accordion-group>
     <ion-accordion value="blog">
       <ion-item slot="header">
