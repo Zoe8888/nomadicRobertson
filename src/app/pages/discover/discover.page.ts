@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicSwiper, ModalController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
+import { PaarlService } from 'src/app/stores/paarl';
 import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
 import SwiperCore from 'swiper';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
@@ -26,7 +27,8 @@ export class DiscoverPage implements OnInit {
     private attractions: AttractionService,
     private weatherService: WeatherService,
     private blogService: BlogService,
-    public blogQuery: BlogQuery
+    public blogQuery: BlogQuery,
+    private paarlService: PaarlService
   ) {}
 
   ngOnInit() {
@@ -57,5 +59,9 @@ export class DiscoverPage implements OnInit {
     });
 
     modal.present();
+  }
+
+  async showAbout() {
+    await this.paarlService.showAbout();
   }
 }

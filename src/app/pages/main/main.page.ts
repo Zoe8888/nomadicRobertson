@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicSwiper } from '@ionic/core';
 import { PaarlQuery, PaarlService } from 'src/app/stores/paarl';
-import Swal from 'sweetalert2';
 import SwiperCore from 'swiper';
 
 SwiperCore.use([IonicSwiper]);
@@ -22,15 +21,6 @@ export class MainPage implements OnInit {
   }
 
   async showAbout() {
-    const about: any = this.paarlQuery.getValue().about;
-    Swal.fire({
-      title: 'About Paarl',
-      html: about?.html,
-      showConfirmButton: false,
-      showCloseButton: true,
-      backdrop: true,
-      heightAuto: false,
-      allowOutsideClick: false,
-    });
+    await this.paarlService.showAbout();
   }
 }
