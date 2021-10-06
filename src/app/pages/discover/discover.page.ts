@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicSwiper, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
 import { PaarlService } from 'src/app/stores/paarl';
 import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
-import SwiperCore from 'swiper';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
-
-SwiperCore.use([IonicSwiper]);
 
 @Component({
   selector: 'app-discover',

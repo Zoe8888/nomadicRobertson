@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="showAbout()">
       <ion-button>About</ion-button>
     </ion-buttons>
     <ion-title>discover</ion-title>
@@ -58,35 +58,28 @@
     <app-discover-grid></app-discover-grid>
   </div>
   <div class="m-2">
-    <ion-button expand="block" (click)="showAttractions()"
-      >TOP 10 ATTRACTIONS</ion-button
-    >
+    <ion-button expand="block" (click)="showAttractions()">
+      TOP 10 ATTRACTIONS
+    </ion-button>
   </div>
   <h5 class="whatsnew w-full text-center">
     <span class="bg-white px-2.5">What's New</span>
   </h5>
   <ion-grid>
-    <ion-row>
+    <ion-row *ngFor="let blog of blogQuery.selectAll() | async as blogs">
       <ion-col>
-        <swiper [slidesPerView]="1.2">
-          <ng-template
-            swiperSlide
-            *ngFor="let blog of blogQuery.selectAll() | async as blogs"
-          >
-            <ion-card class="my-0 mx-1 w-full">
-              <ion-item lines="none" color="primary">
-                <ion-avatar slot="start">
-                  <ion-img [src]="blog.publishedByImageUrl"></ion-img>
-                </ion-avatar>
-                <ion-label>
-                  <h2>{{blog.subject}}</h2>
-                  <p>{{blog.publishedBy}}</p>
-                  <small>{{blog.publishText}}</small>
-                </ion-label>
-              </ion-item>
-            </ion-card>
-          </ng-template>
-        </swiper>
+        <ion-card class="ion-no-margin">
+          <ion-item lines="none" color="primary">
+            <ion-avatar slot="start">
+              <ion-img [src]="blog.publishedByImageUrl"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h5>{{blog.subject}}</h5>
+              <p>{{blog.publishedBy}}</p>
+              <small>{{blog.publishText}}</small>
+            </ion-label>
+          </ion-item>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
