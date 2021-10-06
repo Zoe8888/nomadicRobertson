@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { PromotionQuery, PromotionService } from 'src/app/stores/promotion';
 
 @Component({
@@ -9,12 +10,19 @@ import { PromotionQuery, PromotionService } from 'src/app/stores/promotion';
 export class PromotionsPage implements OnInit {
   constructor(
     private promotionService: PromotionService,
-    public promotionQuery: PromotionQuery
+    public promotionQuery: PromotionQuery,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
     this.promotionService.getList();
+  }
+
+  goTo(profile) {
+    this.navCtrl.navigateForward('blog-details', {
+      state: { profile },
+    });
   }
 }

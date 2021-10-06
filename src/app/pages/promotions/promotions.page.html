@@ -19,7 +19,7 @@
   <ion-grid *ngIf="promotionQuery.selectAll() | async as promotions">
     <ion-row *ngFor="let promotion of promotions">
       <ion-col>
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" (click)="goTo(promotion)">
           <img [src]="promotion?.publishedByImageUrl" width="100%" />
           <ion-item lines="none">
             <ion-label class="ion-text-wrap">
