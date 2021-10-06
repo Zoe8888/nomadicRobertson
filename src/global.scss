@@ -30,3 +30,7 @@
 
 @import "~swiper/swiper";
 @import "~@ionic/angular/css/ionic-swiper";
+
+img {
+  @apply block;
+}
