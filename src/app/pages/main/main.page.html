@@ -12,7 +12,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="primary">
   <div class="relative">
     <img src="assets/img/Paarl mountain.png" />
     <ion-toolbar class="banner absolute bottom-1.5">
@@ -33,29 +33,22 @@
   </ion-toolbar>
   <ion-accordion-group>
     <ion-accordion value="blog">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
         <ion-label>Blog</ion-label>
       </ion-item>
-
       <div slot="content">
         <swiper [slidesPerView]="1.5">
-          <ng-template swiperSlide>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <ion-card class="ion-no-margin">
-                    <img src="assets/img/Paarl mountain.png" />
-                  </ion-card>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+          <ng-template swiperSlide *ngFor="let blog of blogs">
+            <ion-card class="mx-1 my-2">
+              <app-blog-item [blog]="blog"></app-blog-item>
+            </ion-card>
           </ng-template>
         </swiper>
       </div>
     </ion-accordion>
     <ion-accordion value="Gallery">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="images-outline" slot="start"></ion-icon>
         <ion-label>Gallery</ion-label>
       </ion-item>
@@ -77,7 +70,7 @@
       </div>
     </ion-accordion>
     <ion-accordion value="Events">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="calendar-outline" slot="start"></ion-icon>
         <ion-label>Events</ion-label>
       </ion-item>

@@ -6,6 +6,7 @@ export interface Blog {
   publishedByImageUrl: string;
   publishText: string;
   publishedBy: string;
+  uniqueId: string;
 }
 
 export function createBlog(params: Partial<Blog>) {

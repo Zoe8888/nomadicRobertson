@@ -17,5 +17,9 @@
   </ion-toolbar>
 </div>
 <ion-toolbar color="primary">
-  <ion-title>{{ profile?.title ?? profile.subject }}</ion-title>
+  <ion-label class="ion-text-wrap font-bold">
+    <h6 class="ion-text-center">
+      {{ profile?.title ?? profile.subject }}
+    </h6>
+  </ion-label>
 </ion-toolbar>

@@ -3,7 +3,7 @@
     <ion-buttons slot="start" (click)="showAbout()">
       <ion-button>About</ion-button>
     </ion-buttons>
-    <ion-title>discover</ion-title>
+    <ion-title>Discover</ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-menu-button></ion-menu-button>
@@ -69,16 +69,7 @@
     <ion-row *ngFor="let blog of blogQuery.selectAll() | async as blogs">
       <ion-col>
         <ion-card class="ion-no-margin">
-          <ion-item lines="none" color="primary">
-            <ion-avatar slot="start">
-              <ion-img [src]="blog.publishedByImageUrl"></ion-img>
-            </ion-avatar>
-            <ion-label>
-              <h5>{{blog.subject}}</h5>
-              <p>{{blog.publishedBy}}</p>
-              <small>{{blog.publishText}}</small>
-            </ion-label>
-          </ion-item>
+          <app-blog-item [blog]="blog"></app-blog-item>
         </ion-card>
       </ion-col>
     </ion-row>

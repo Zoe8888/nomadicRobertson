@@ -6,10 +6,10 @@ import { BlogStore } from './blog.store';
 export class BlogService {
   constructor(private blogStore: BlogStore, private http: HttpService) {}
 
-  async getList() {
+  async getList(profile = 'paarl-paarl') {
     return await this.http
       .request('GET', 'blogList', {
-        profile: 'paarl-paarl',
+        profile,
         format: 'json',
       })
       .then((result) => {
@@ -21,6 +21,18 @@ export class BlogService {
                 (newEntity) => newEntity.id === entity.id
               )
           );
+        }
+      });
+  }
+
+  getBlog(id) {
+    this.http
+      .request('GET', 'blog/' + id, {
+        format: 'json',
+      })
+      .then((result) => {
+        if (result[0]?.objectList?.length > 0) {
+          this.blogStore.upsertMany(result[0].objectList);
         }
       });
   }

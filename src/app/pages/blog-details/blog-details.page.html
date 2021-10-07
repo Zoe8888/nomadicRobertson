@@ -3,10 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{profile?.title}}</ion-title>
+    <ion-title>{{blog?.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-profile-details-header [profile]="profile"></app-profile-details-header>
+  <app-profile-details-header [profile]="blog"></app-profile-details-header>
+  <ng-container *ngIf="blog?.intro">
+    <div
+      class="px-2"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(blog.intro)"
+    ></div>
+  </ng-container>
+  <ng-container *ngIf="blog?.message">
+    <div
+      class="px-2"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(blog.message)"
+    ></div>
+  </ng-container>
 </ion-content>
