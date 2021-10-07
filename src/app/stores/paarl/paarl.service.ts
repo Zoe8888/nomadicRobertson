@@ -37,6 +37,10 @@ export class PaarlService {
         htmlContainer: '!text-left !text-sm !text-white',
         title: '!text-white',
       },
+      showClass: {
+        backdrop: 'swal2-noanimation',
+        popup: 'swal2-noanimation',
+      },
       showConfirmButton: false,
       showCloseButton: true,
       backdrop: true,
