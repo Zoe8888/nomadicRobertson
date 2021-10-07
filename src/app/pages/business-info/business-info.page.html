@@ -7,11 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="primary">
   <app-profile-details-header [profile]="profile"></app-profile-details-header>
+
   <ion-accordion-group>
     <ion-accordion value="blog">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
         <ion-label>Blog</ion-label>
       </ion-item>
@@ -33,7 +34,7 @@
       </div>
     </ion-accordion>
     <ion-accordion value="Gallery">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="images-outline" slot="start"></ion-icon>
         <ion-label>Gallery</ion-label>
       </ion-item>
@@ -55,7 +56,7 @@
       </div>
     </ion-accordion>
     <ion-accordion value="Events">
-      <ion-item slot="header">
+      <ion-item slot="header" color="primary">
         <ion-icon name="calendar-outline" slot="start"></ion-icon>
         <ion-label>Events</ion-label>
       </ion-item>

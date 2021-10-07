@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { LikedQuery, LikedService } from 'src/app/stores/liked';
 
 @Component({
@@ -9,12 +10,19 @@ import { LikedQuery, LikedService } from 'src/app/stores/liked';
 export class LikedPage implements OnInit {
   constructor(
     private likedService: LikedService,
-    public likedQuery: LikedQuery
+    public likedQuery: LikedQuery,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
     this.likedService.getList();
+  }
+
+  goTo(profile) {
+    this.navCtrl.navigateForward('business-info', {
+      state: { profile },
+    });
   }
 }
