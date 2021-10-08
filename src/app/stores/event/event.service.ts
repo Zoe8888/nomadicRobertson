@@ -6,10 +6,10 @@ import { EventStore } from './event.store';
 export class EventService {
   constructor(private eventStore: EventStore, private http: HttpService) {}
 
-  async getList() {
+  async getList(profile = 'paarl-paarl') {
     return await this.http
       .request('GET', 'eventList', {
-        profile: 'paarl-paarl',
+        profile,
         sort: 'upcoming',
         startDateOffset: '-3600000',
         format: 'json',
@@ -31,7 +31,7 @@ export class EventService {
     return await this.http
       .request('GET', `event/${id}`, { format: 'json' })
       .then((result) => {
-        console.log(result);
+        this.eventStore.upsertMany(result[0].objectList);
       });
   }
 }
