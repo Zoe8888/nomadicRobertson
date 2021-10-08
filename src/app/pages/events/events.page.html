@@ -15,16 +15,27 @@
       <ion-label>Coming up!</ion-label>
     </ion-list-header>
     <ng-container *ngFor="let event of eventQuery.list | async">
-      <ion-item
-        routerLink="event-details"
-        [queryParams]="{event:event| json}"
-        detail="false"
-      >
-        <div class="calendar" slot="start">
-          <div class="date">
-            <div class="month">{{event.startDate | date: 'MMM'}}</div>
-            <div class="day">{{event.startDate | date: 'd'}}</div>
-            <div class="year">{{event.startDate | date: 'YYYY'}}</div>
+      <ion-item detail="false" (click)="goTo(event)">
+        <div class="h-full inline-block" slot="start">
+          <div
+            class="
+              date
+              font-bold
+              text-center
+              overflow-hidden
+              rounded
+              w-12
+              my-0
+              mx-auto
+            "
+          >
+            <div class="month bg-primary text-white text-xs">
+              {{event.startDate | date: 'MMM'}}
+            </div>
+            <div class="bg-white">{{event.startDate | date: 'd'}}</div>
+            <div class="year bg-dark text-white text-xs">
+              {{event.startDate | date: 'YYYY'}}
+            </div>
           </div>
         </div>
         <ion-label>

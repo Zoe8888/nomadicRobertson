@@ -4,11 +4,6 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Event</ion-title>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-menu-button></ion-menu-button>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
     <ion-item lines="none">
@@ -21,11 +16,26 @@
         <small>{{event?.addressLine1}}</small>
       </ion-label>
 
-      <div class="calendar contents" slot="end">
-        <div class="date">
-          <div class="month">{{event?.startDate | date: 'MMM'}}</div>
-          <div class="day">{{event?.startDate | date: 'd'}}</div>
-          <div class="year">{{event?.startDate | date: 'YYYY'}}</div>
+      <div class="h-full inline-block" slot="end">
+        <div
+          class="
+            date
+            font-bold
+            text-center
+            overflow-hidden
+            rounded
+            w-12
+            my-0
+            mx-auto
+          "
+        >
+          <div class="month bg-primary text-white text-xs">
+            {{event.startDate | date: 'MMM'}}
+          </div>
+          <div class="bg-white">{{event.startDate | date: 'd'}}</div>
+          <div class="year bg-dark text-white text-xs">
+            {{event.startDate | date: 'YYYY'}}
+          </div>
         </div>
       </div>
     </ion-item>
@@ -44,16 +54,6 @@
 
 <ion-content>
   <div class="px-2">
-    <p>
-      What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and
-      typesetting industry. Lorem Ipsum has been the industry's standard dummy
-      text ever since the 1500s, when an unknown printer took a galley of type
-      and scrambled it to make a type specimen book. It has survived not only
-      five centuries, but also the leap into electronic typesetting, remaining
-      essentially unchanged. It was popularised in the 1960s with the release of
-      Letraset sheets containing Lorem Ipsum passages, and more recently with
-      desktop publishing software like Aldus PageMaker including versions of
-      Lorem Ipsum.
-    </p>
+    <span>{{event?.description}}</span>
   </div>
 </ion-content>

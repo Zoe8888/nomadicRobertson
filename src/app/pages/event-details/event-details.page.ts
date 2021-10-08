@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EventService } from 'src/app/stores/event';
+import { Router } from '@angular/router';
+import { UntilDestroy } from '@ngneat/until-destroy';
+import { EventQuery, EventService } from 'src/app/stores/event';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.page.html',
@@ -10,15 +12,18 @@ import { EventService } from 'src/app/stores/event';
 export class EventDetailsPage implements OnInit {
   event: any;
   constructor(
-    private route: ActivatedRoute,
-    private eventService: EventService
+    private router: Router,
+    private eventService: EventService,
+    private eventQuery: EventQuery
   ) {
-    this.route.queryParams.subscribe(({ event }) => {
-      if (event) {
-        this.event = JSON.parse(event);
-        this.eventService.getEvent(this.event.id);
-      }
-    });
+    const { state } = this.router.getCurrentNavigation().extras;
+    this.event = state.event;
+    if (this.event) {
+      this.eventService.getEvent(this.event.id);
+      this.eventQuery
+        .selectEntity(this.event.id)
+        .subscribe((event) => (this.event = event));
+    }
   }
 
   ngOnInit() {}
