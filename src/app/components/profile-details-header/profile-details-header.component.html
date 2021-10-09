@@ -1,6 +1,6 @@
 <div class="relative">
   <ion-img
-    [src]="profile?.image200Url ?? profile.publishedByImageUrl"
+    [src]="profile?.image200Url ?? profile?.publishedByImageUrl"
     class="banner"
   ></ion-img>
   <ion-toolbar class="banner absolute bottom-1.5">
@@ -19,7 +19,7 @@
 <ion-toolbar color="primary">
   <ion-label class="ion-text-wrap font-bold">
     <h6 class="ion-text-center">
-      {{ profile?.title ?? profile.subject }}
+      {{ profile?.title ?? profile?.subject }}
     </h6>
   </ion-label>
 </ion-toolbar>
