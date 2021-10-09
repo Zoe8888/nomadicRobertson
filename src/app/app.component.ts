@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SplashScreen } from '@capacitor/splash-screen';
+import { Platform } from '@ionic/angular';
 import { UserQuery, UserService } from './stores/user';
 
 @Component({
@@ -19,7 +21,20 @@ export class AppComponent {
       icon: 'settings',
     },
   ];
-  constructor(public userQuery: UserQuery, private userService: UserService) {}
+  constructor(
+    public userQuery: UserQuery,
+    private userService: UserService,
+    private platform: Platform
+  ) {}
+
+  async initApp() {
+    SplashScreen.show({ fadeInDuration: 50 });
+    await this.platform.ready().then(() => {
+      if (this.platform.is('capacitor')) {
+        SplashScreen.hide({ fadeOutDuration: 500 });
+      }
+    });
+  }
 
   logout() {
     this.userService.logout();
