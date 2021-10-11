@@ -8,6 +8,7 @@ import { NavController } from '@ionic/angular';
 })
 export class BlogItemComponent implements OnInit {
   @Input() blog: any;
+  @Input() color: any;
 
   constructor(private navCtrl: NavController) {}
 

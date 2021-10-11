@@ -69,7 +69,7 @@
     <ion-row *ngFor="let blog of blogQuery.selectAll() | async as blogs">
       <ion-col>
         <ion-card class="ion-no-margin">
-          <app-blog-item [blog]="blog"></app-blog-item>
+          <app-blog-item [blog]="blog" [color]="'primary'"></app-blog-item>
         </ion-card>
       </ion-col>
     </ion-row>
