@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -13,7 +6,7 @@ import { NavController } from '@ionic/angular';
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })
-export class AccordionComponent implements OnInit, OnChanges {
+export class AccordionComponent implements OnInit {
   @ViewChild('blogSlides', { static: false }) blogSlides: any;
   @ViewChild('eventSlides', { static: false }) eventSlides: any;
   @ViewChild('photoSlides', { static: false }) photoSlides: any;
@@ -24,10 +17,6 @@ export class AccordionComponent implements OnInit, OnChanges {
   constructor(private navCtrl: NavController) {}
 
   ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 
   onChange(ev: any) {
     const { value } = ev.detail;
