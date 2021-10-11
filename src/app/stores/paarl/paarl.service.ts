@@ -26,6 +26,16 @@ export class PaarlService {
       });
   }
 
+  async getInfo() {
+    return await this.http
+      .request('GET', 'wiki', {
+        profile: 'paarl-paarl',
+        wikiId: 'paarl-paarl',
+        format: 'json',
+      })
+      .then((result) => result[0]?.objectList[0]);
+  }
+
   async showAbout() {
     await this.getAbout();
     const { about }: any = this.paarlQuery.getValue();

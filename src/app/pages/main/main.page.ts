@@ -5,6 +5,7 @@ import { BlogQuery, BlogService } from 'src/app/stores/blog';
 import { EventQuery, EventService } from 'src/app/stores/event';
 import { PaarlService } from 'src/app/stores/paarl';
 import { PhotoQuery, PhotoService } from 'src/app/stores/photo';
+import Swal from 'sweetalert2';
 import SwiperCore from 'swiper';
 
 SwiperCore.use([IonicSwiper]);
@@ -56,5 +57,30 @@ export class MainPage implements OnInit {
 
   async showAbout() {
     await this.paarlService.showAbout();
+  }
+
+  async getInfo() {
+    const { html } = await this.paarlService.getInfo();
+    console.log(html);
+    if (html) {
+      Swal.fire({
+        title: 'Information',
+        html,
+        background: 'var(--ion-color-primary)',
+        customClass: {
+          htmlContainer: '!text-left !text-sm !text-white',
+          title: '!text-white',
+        },
+        showClass: {
+          backdrop: 'swal2-noanimation',
+          popup: 'swal2-noanimation',
+        },
+        showConfirmButton: false,
+        showCloseButton: true,
+        backdrop: true,
+        heightAuto: false,
+        allowOutsideClick: false,
+      });
+    }
   }
 }
