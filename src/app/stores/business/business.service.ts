@@ -17,17 +17,14 @@ export class BusinessService {
       sort: 'alpha',
       format: 'json',
     });
+  }
 
-    // .then((result) => {
-    //   if (result[0]?.objectList?.length > 0) {
-    //     this.businessStore.upsertMany(result[0].objectList);
-    //     this.businessStore.remove(
-    //       (entity) =>
-    //         !result[0].objectList.some(
-    //           (newEntity) => newEntity.id === entity.id
-    //         )
-    //     );
-    //   }
-    // });
+  async getInfo(uniqueId: any) {
+    return await this.http
+      .request('GET', 'show', {
+        uniqueId,
+        format: 'json',
+      })
+      .then((result) => result[0]?.objectList[0]);
   }
 }

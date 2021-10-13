@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Share } from '@capacitor/share';
+import { NavController } from '@ionic/angular';
 import { IonicSwiper } from '@ionic/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
@@ -28,7 +30,8 @@ export class MainPage implements OnInit {
     private eventService: EventService,
     private eventQuery: EventQuery,
     private photoService: PhotoService,
-    private photoQuery: PhotoQuery
+    private photoQuery: PhotoQuery,
+    private navCtrl: NavController
   ) {
     this.blogQuery
       .selectAll({ filterBy: (entity) => entity?.uniqueId === 'paarl-paarl' })
@@ -41,7 +44,6 @@ export class MainPage implements OnInit {
     this.photoQuery
       .selectAll({ filterBy: (entity) => entity?.uniqueId === 'paarl-paarl' })
       .subscribe((photos) => {
-        console.log(photos);
         this.photos = photos;
       });
   }
@@ -61,7 +63,6 @@ export class MainPage implements OnInit {
 
   async getInfo() {
     const { html } = await this.paarlService.getInfo();
-    console.log(html);
     if (html) {
       Swal.fire({
         title: 'Information',
@@ -82,5 +83,20 @@ export class MainPage implements OnInit {
         allowOutsideClick: false,
       });
     }
+  }
+
+  goTo(uniqueId) {
+    this.navCtrl.navigateForward('profile-info', {
+      state: { uniqueId },
+    });
+  }
+
+  async share() {
+    await Share.share({
+      title: 'See cool stuff from Paarl',
+      text: 'Really awesome thing you need to see right meow',
+      url: 'https://nomadicways.travel/',
+      dialogTitle: 'Share with buddies',
+    });
   }
 }

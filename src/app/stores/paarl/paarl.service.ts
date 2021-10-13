@@ -28,9 +28,8 @@ export class PaarlService {
 
   async getInfo() {
     return await this.http
-      .request('GET', 'wiki', {
-        profile: 'paarl-paarl',
-        wikiId: 'paarl-paarl',
+      .request('GET', 'show', {
+        uniqueId: 'paarl-paarl',
         format: 'json',
       })
       .then((result) => result[0]?.objectList[0]);

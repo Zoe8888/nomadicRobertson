@@ -49,7 +49,6 @@ export class LoginPage implements OnInit {
     await this.userService
       .login(this.f.email.value.trim(), this.f.password.value)
       .then((success) => {
-        console.log(success);
         if (success) {
           this.navCtrl.navigateBack('');
         }

@@ -8,7 +8,7 @@ export class LikedService {
 
   async getList() {
     return await this.http
-      .request('GET', 'show', {
+      .request('GET', 'profileList', {
         uniqueId: 'paarl-paarl',
         view: 'mine',
         format: 'json',

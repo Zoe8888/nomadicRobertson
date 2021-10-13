@@ -25,7 +25,6 @@ export class UserService {
     return await this.http
       .request('GET', 'site', { format: 'json' })
       .then((result) => {
-        console.log(result);
         const { status, objectList } = result[0];
         if (status.code === 0) {
           resetStores({ exclude: ['user'] });

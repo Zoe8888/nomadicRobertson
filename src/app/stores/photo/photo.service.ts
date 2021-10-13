@@ -10,7 +10,6 @@ export class PhotoService {
     await this.http
       .request('GET', 'photoList', { profile, format: 'json' })
       .then((result) => {
-        console.log(result[0].objectList);
         this.photoStore.upsertMany(result[0].objectList);
       });
   }

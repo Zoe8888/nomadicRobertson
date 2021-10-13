@@ -3,18 +3,19 @@
     [src]="profile?.image200Url ?? profile?.publishedByImageUrl"
     class="banner"
   ></ion-img>
-  <ion-toolbar class="banner absolute bottom-1.5">
-    <ion-buttons slot="start">
-      <ion-button color="white">
-        <ion-icon slot="icon-only" name="alert-circle-outline"> </ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="white" (click)="share()">
-        <ion-icon slot="icon-only" name="share-social-outline"> </ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"
+    ><ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary" (click)="goTo(profile?.uniqueId)">
+        <ion-icon name="alert-circle"> </ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary">
+        <ion-icon name="heart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </div>
 <ion-toolbar color="primary">
   <ion-label class="ion-text-wrap font-bold">
