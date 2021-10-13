@@ -28,6 +28,7 @@
       leaflet
       [leafletOptions]="options"
       [(leafletCenter)]="center"
+      [leafletLayer]="layer"
       (leafletMapReady)="onMapReady($event)"
     ></div>
     <ion-item button lines="none" *ngIf="center" (click)="takeMeThere()">

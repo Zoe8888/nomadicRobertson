@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Capacitor } from '@capacitor/core';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { LatLng, latLng, tileLayer } from 'leaflet';
+import { icon, LatLng, latLng, Layer, marker, tileLayer } from 'leaflet';
 import { ProfileQuery, ProfileService } from 'src/app/stores/profile';
 
 @UntilDestroy({ checkProperties: true })
@@ -40,6 +40,16 @@ export class ProfileInfoPage implements OnInit {
   center: LatLng;
   ready: boolean;
 
+  paradise = marker([46.78465227596462, -121.74141269177198], {
+    icon: icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
+      iconUrl: 'leaflet/marker-icon.png',
+      shadowUrl: 'leaflet/marker-shadow.png',
+    }),
+  });
+  layer: Layer;
+
   constructor(
     private router: Router,
     private profileService: ProfileService,
@@ -73,6 +83,15 @@ export class ProfileInfoPage implements OnInit {
         Number(this.profile?.latitude),
         Number(this.profile?.longitude)
       );
+
+      this.layer = marker(this.center, {
+        icon: icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'assets/marker-icon-2x.png',
+          shadowUrl: 'assets/marker-shadow.png',
+        }),
+      });
     }
   }
 
