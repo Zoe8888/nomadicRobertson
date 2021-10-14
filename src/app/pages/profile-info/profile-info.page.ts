@@ -21,7 +21,8 @@ export class ProfileInfoPage implements OnInit {
   options: L.MapOptions = {
     layers: [
       tileLayer(
-        'https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png',
+        // eslint-disable-next-line max-len
+        'https://{s}.tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=r5DE8X2qpUTOW5p9BdP2DbeQRXMjzGlxs870VpzJCl5wMsy5tMt7bPKdBx7yIc8S',
         {
           maxZoom: 18,
         }
