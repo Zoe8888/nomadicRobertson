@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicSwiper } from '@ionic/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
 import { EventQuery, EventService } from 'src/app/stores/event';
 import { PhotoQuery, PhotoService } from 'src/app/stores/photo';
+import { ProfileService } from 'src/app/stores/profile';
 import SwiperCore from 'swiper';
 
 SwiperCore.use([IonicSwiper]);
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-business-info',
   templateUrl: './business-info.page.html',
@@ -26,12 +29,17 @@ export class BusinessInfoPage implements OnInit {
     private blogQuery: BlogQuery,
     private eventQuery: EventQuery,
     private photoService: PhotoService,
+    private profileService: ProfileService,
     private photoQuery: PhotoQuery
   ) {}
 
   async ngOnInit() {
     const { state } = this.router.getCurrentNavigation().extras;
     this.profile = state.profile;
+
+    await this.profileService
+      .getInfo(state.profile.uniqueId)
+      .then((profile) => (this.profile = profile));
 
     this.blogQuery
       .selectAll({

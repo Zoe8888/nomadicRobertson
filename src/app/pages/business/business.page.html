@@ -25,7 +25,7 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let profile of businesses">
+      <ion-col size="6" *ngFor="let profile of profiles">
         <ion-card class="ion-no-margin" (click)="goTo(profile)">
           <img [src]="profile?.image200Url" width="100%" />
           <ion-item lines="none">

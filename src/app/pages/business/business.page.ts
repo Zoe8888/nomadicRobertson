@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { BusinessService } from 'src/app/stores/business';
+import { ProfileService } from 'src/app/stores/profile';
 
 @Component({
   selector: 'app-business',
@@ -10,11 +10,11 @@ import { BusinessService } from 'src/app/stores/business';
 })
 export class BusinessPage implements OnInit {
   title: string;
-  businesses: any[];
+  profiles: any[];
 
   constructor(
     private router: Router,
-    private businessService: BusinessService,
+    private profileService: ProfileService,
     private navCtrl: NavController
   ) {}
 
@@ -26,8 +26,8 @@ export class BusinessPage implements OnInit {
   }
 
   async getBusiness(title: string) {
-    const res = await this.businessService.getList(title);
-    this.businesses = res[0].objectList;
+    const res = await this.profileService.getList(title);
+    this.profiles = res[0].objectList;
   }
 
   goTo(profile) {

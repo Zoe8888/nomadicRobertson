@@ -11,6 +11,17 @@ export class ProfileService {
     private http: HttpService
   ) {}
 
+  async getList(list: string) {
+    return await this.http.request('GET', 'profileList', {
+      profile: 'paarl-paarl',
+      list,
+      radius: '20000',
+      sort: 'alpha',
+      items: '200',
+      format: 'json',
+    });
+  }
+
   async getInfo(uniqueId = 'paarl-paarl') {
     return await this.http
       .request('GET', 'show', {
@@ -40,7 +51,7 @@ export class ProfileService {
     await this.http
       .request('POST', 'profileMembership', {
         action,
-        uniqueId,
+        profile: uniqueId,
         format: 'json',
       })
       .then((result) => {
