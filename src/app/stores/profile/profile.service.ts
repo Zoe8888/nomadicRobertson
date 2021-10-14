@@ -20,6 +20,7 @@ export class ProfileService {
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
           this.profileStore.upsertMany(result[0].objectList);
+          return result[0].objectList[0];
         }
       });
   }
@@ -30,5 +31,22 @@ export class ProfileService {
         format: 'json',
       })
       .then((result) => result[0]?.objectList[0]);
+  }
+
+  async membership({ teamMemberId, uniqueId }) {
+    const action = teamMemberId ? 'leave' : 'join';
+    console.log(action);
+    this.profileStore.setLoading(true);
+    await this.http
+      .request('POST', 'profileMembership', {
+        action,
+        uniqueId,
+        format: 'json',
+      })
+      .then((result) => {
+        if (result[0].status.code === 0) {
+          this.getInfo(uniqueId);
+        }
+      });
   }
 }

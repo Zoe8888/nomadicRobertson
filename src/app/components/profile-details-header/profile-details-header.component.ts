@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ProfileService } from 'src/app/stores/profile';
 
 @Component({
   selector: 'app-profile-details-header',
@@ -9,7 +10,10 @@ import { NavController } from '@ionic/angular';
 export class ProfileDetailsHeaderComponent implements OnInit {
   @Input() profile: any;
 
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private profileService: ProfileService
+  ) {}
 
   ngOnInit() {}
 
@@ -17,5 +21,9 @@ export class ProfileDetailsHeaderComponent implements OnInit {
     this.navCtrl.navigateForward('profile-info', {
       state: { uniqueId },
     });
+  }
+
+  async membership() {
+    await this.profileService.membership(this.profile);
   }
 }
