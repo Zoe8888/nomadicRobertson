@@ -25,7 +25,7 @@ export class BusinessPage implements OnInit {
     this.getBusiness(state?.business);
   }
 
-  async getBusiness(title) {
+  async getBusiness(title: string) {
     const res = await this.businessService.getList(title);
     this.businesses = res[0].objectList;
   }

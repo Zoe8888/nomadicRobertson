@@ -9,7 +9,7 @@ export class BusinessService {
     private http: HttpService
   ) {}
 
-  async getList(list) {
+  async getList(list: string) {
     return await this.http.request('GET', 'profileList', {
       profile: 'paarl-paarl',
       list,
