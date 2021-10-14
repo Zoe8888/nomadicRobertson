@@ -11,6 +11,7 @@ import { ProfileService } from 'src/app/stores/profile';
 export class BusinessPage implements OnInit {
   title: string;
   profiles: any[];
+  searchProfiles: any[];
 
   constructor(
     private router: Router,
@@ -34,5 +35,12 @@ export class BusinessPage implements OnInit {
     this.navCtrl.navigateForward('business-info', {
       state: { profile },
     });
+  }
+
+  searchRetailer(event) {
+    const found = this.profiles.filter((profile) =>
+      profile?.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    this.searchProfiles = found;
   }
 }
