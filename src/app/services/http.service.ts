@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, HttpOptions, HttpResponse } from '@capacitor-community/http';
 import { environment } from 'src/environments/environment';
@@ -45,7 +46,8 @@ export class HttpService {
     if (method === 'GET' && params) {
       call.params = params;
     } else if (params) {
-      call.data = params;
+      const options = new HttpParams({ fromObject: params }).toString();
+      call.url = `${url}?${options}`;
     }
 
     const { data }: HttpResponse = await Http.request(call);

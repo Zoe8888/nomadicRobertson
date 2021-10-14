@@ -1,8 +1,5 @@
 <div class="relative">
-  <ion-img
-    [src]="profile?.image200Url ?? profile?.publishedByImageUrl"
-    class="banner"
-  ></ion-img>
+  <ion-img [src]="profile?.image200Url" class="banner"></ion-img>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed"
     ><ion-fab-button>
       <ion-icon name="add"></ion-icon>
@@ -13,10 +10,10 @@
       </ion-fab-button>
     </ion-fab-list>
     <ion-fab-list side="start" *ngIf="(userQuery.isGuest | async) === false">
-      <ion-fab-button color="primary" (click)="membership()">
+      <ion-fab-button color="primary" (click)="membership(profile)">
         <ion-icon
           name="heart"
-          [color]="profile?.teamMemberId ? 'danger' : 'white'"
+          [color]="profile?.canLeave === 'true' ? 'danger' : 'white'"
         ></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

@@ -18,6 +18,7 @@
   </ion-card>
   <div
     class="mx-2"
+    *ngIf="wiki?.html"
     [innerHTML]="sanitizer.bypassSecurityTrustHtml(wiki?.html)"
   ></div>
 

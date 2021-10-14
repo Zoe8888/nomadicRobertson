@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ProfileService } from 'src/app/stores/profile';
+import { UserQuery } from 'src/app/stores/user';
 
 @Component({
   selector: 'app-profile-details-header',
@@ -12,6 +13,7 @@ export class ProfileDetailsHeaderComponent implements OnInit {
 
   constructor(
     private navCtrl: NavController,
+    private profileService: ProfileService,
     public userQuery: UserQuery
   ) {}
 
@@ -23,7 +25,7 @@ export class ProfileDetailsHeaderComponent implements OnInit {
     });
   }
 
-  async membership() {
-    await this.profileService.membership(this.profile);
+  async membership(profile) {
+    await this.profileService.membership(profile);
   }
 }

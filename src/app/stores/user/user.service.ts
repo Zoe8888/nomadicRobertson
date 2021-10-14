@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { resetStores } from '@datorama/akita';
 import { NavController } from '@ionic/angular';
 import { HttpService } from 'src/app/services/http.service';
 import { environment } from 'src/environments/environment';
@@ -27,7 +26,6 @@ export class UserService {
       .then((result) => {
         const { status, objectList } = result[0];
         if (status.code === 0) {
-          resetStores({ exclude: ['user'] });
           const data = objectList[0];
           this.userStore.update({ data });
           return true;
@@ -44,7 +42,7 @@ export class UserService {
   }
 
   logout() {
-    resetStores();
+    this.userStore.reset();
     this.navCtrl.navigateRoot('');
   }
 }
