@@ -37,7 +37,7 @@ export class BusinessPage implements OnInit {
     });
   }
 
-  searchRetailer(event) {
+  searchProfile(event) {
     const found = this.profiles.filter((profile) =>
       profile?.title.toLowerCase().includes(event.target.value.toLowerCase())
     );

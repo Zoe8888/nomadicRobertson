@@ -59,6 +59,10 @@ const routes: Routes = [
         (m) => m.ProfileInfoPageModule
       ),
   },
+  {
+    path: 'business-search',
+    loadChildren: () => import('./pages/business-search/business-search.module').then( m => m.BusinessSearchPageModule)
+  },
 ];
 @NgModule({
   imports: [

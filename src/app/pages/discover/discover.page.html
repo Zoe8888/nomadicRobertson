@@ -49,9 +49,14 @@
       </ion-fab-button>
     </ion-fab>
     <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
-    <ion-toolbar class="search absolute -bottom-6">
-      <ion-searchbar color="light" class="!pb-0 shadow-md"></ion-searchbar>
-    </ion-toolbar>
+    <div class="w-full absolute -bottom-6">
+      <ion-card class="m-2">
+        <ion-item lines="none" button (click)="showSearch()">
+          <ion-icon name="search-outline" slot="start"></ion-icon>
+          <ion-label> Search for a business </ion-label>
+        </ion-item>
+      </ion-card>
+    </div>
   </div>
 
   <div class="px-1" *ngIf="ready">

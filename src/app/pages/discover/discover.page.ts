@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
 import { PaarlService } from 'src/app/stores/paarl';
 import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
+import { BusinessSearchPage } from '../business-search/business-search.page';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
 
@@ -20,6 +21,7 @@ export class DiscoverPage implements OnInit {
   ready: boolean;
   constructor(
     private modalCtrl: ModalController,
+    private navCtrl: NavController,
     public weather: WeatherQuery,
     private attractions: AttractionService,
     private weatherService: WeatherService,
@@ -60,5 +62,27 @@ export class DiscoverPage implements OnInit {
 
   async showAbout() {
     await this.paarlService.showAbout();
+  }
+
+  async showSearch() {
+    const modal = await this.modalCtrl.create({
+      component: BusinessSearchPage,
+      initialBreakpoint: 0.65,
+      breakpoints: [0, 0.65, 1],
+    });
+
+    modal.onDidDismiss().then(({ data }) => {
+      if (data) {
+        this.goTo(data);
+      }
+    });
+
+    return modal.present();
+  }
+
+  goTo(profile) {
+    this.navCtrl.navigateForward('business-info', {
+      state: { profile },
+    });
   }
 }
