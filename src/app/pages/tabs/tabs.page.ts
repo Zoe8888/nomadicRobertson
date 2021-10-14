@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserQuery } from 'src/app/stores/user';
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
-  constructor() {}
+  constructor(public userQuery: UserQuery) {}
 
   ngOnInit() {}
 }

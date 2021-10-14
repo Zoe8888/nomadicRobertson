@@ -11,6 +11,8 @@
       <ion-fab-button color="primary" (click)="goTo(profile?.uniqueId)">
         <ion-icon name="alert-circle"> </ion-icon>
       </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start" *ngIf="(userQuery.isGuest | async) === false">
       <ion-fab-button color="primary" (click)="membership()">
         <ion-icon
           name="heart"

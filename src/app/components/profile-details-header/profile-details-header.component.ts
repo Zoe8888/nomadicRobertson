@@ -12,7 +12,7 @@ export class ProfileDetailsHeaderComponent implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private profileService: ProfileService
+    public userQuery: UserQuery
   ) {}
 
   ngOnInit() {}
