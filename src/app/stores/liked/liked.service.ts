@@ -11,6 +11,7 @@ export class LikedService {
       .request('GET', 'profileList', {
         uniqueId: 'paarl-paarl',
         view: 'mine',
+        category: 'businesses',
         format: 'json',
       })
       .then((result) => {
