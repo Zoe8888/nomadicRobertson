@@ -33,10 +33,6 @@
                   {{today?.main?.temp|number: '1.0-0'}}°C
                 </h2>
                 <p>{{today?.weather?.[0]?.main}}</p>
-                <!-- <small>
-                  L: {{today?.main?.temp_min|number: '1.0-0'}} - H:
-                  {{today?.main?.temp_max|number: '1.0-0'}}
-                </small> -->
               </ion-label>
             </ion-item>
           </ion-card>
@@ -45,7 +41,7 @@
     </ion-grid>
     <ion-fab vertical="top" horizontal="end">
       <ion-fab-button>
-        <ion-icon name="medical"></ion-icon>
+        <ion-icon src="assets/img/sos.svg"></ion-icon>
       </ion-fab-button>
     </ion-fab>
     <ion-img src="assets/img/Paarl mountain.png" class="banner"></ion-img>
