@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 import { UserQuery, UserService } from 'src/app/stores/user';
 
 @Component({
@@ -15,7 +15,8 @@ export class LoginPage implements OnInit {
     public formBuilder: FormBuilder,
     private userService: UserService,
     public userQuery: UserQuery,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
@@ -28,10 +29,7 @@ export class LoginPage implements OnInit {
           Validators.email,
         ]),
       ],
-      password: [
-        '',
-        Validators.compose([Validators.minLength(6), Validators.required]),
-      ],
+      password: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -48,9 +46,18 @@ export class LoginPage implements OnInit {
 
     await this.userService
       .login(this.f.email.value.trim(), this.f.password.value)
-      .then((success) => {
+      .then(async (success) => {
         if (success) {
           this.navCtrl.navigateBack('');
+        } else {
+          const error = await this.toastCtrl.create({
+            color: 'danger',
+            position: 'top',
+            message: 'The credentials are incorrect, please try again',
+            duration: 3000,
+          });
+
+          error.present();
         }
       });
   }
