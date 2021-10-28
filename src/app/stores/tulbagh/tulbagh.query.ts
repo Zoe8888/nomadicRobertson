@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
-import { PaarlState, PaarlStore } from './paarl.store';
+import { TulbaghStore, TulbaghState } from './tulbagh.store';
 
 @Injectable({ providedIn: 'root' })
-export class PaarlQuery extends Query<PaarlState> {
+export class TulbaghQuery extends Query<TulbaghState> {
   about = this.select('about');
 
-  constructor(protected store: PaarlStore) {
+  constructor(protected store: TulbaghStore) {
     super(store);
   }
+
 }

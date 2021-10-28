@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-button (click)="showAbout()"> About </ion-button>
     </ion-buttons>
-    <ion-title>Paarl</ion-title>
+    <ion-title>Tulbagh</ion-title>
     <ion-buttons slot="end">
       <ion-button>
         <ion-menu-button></ion-menu-button>
@@ -14,24 +14,22 @@
 
 <ion-content color="primary">
   <div class="relative">
-    <img src="assets/img/Paarl mountain.png" />
+    <img class="image" src="assets/img/tulbagh.jpg" />
     <ion-toolbar class="banner absolute bottom-1.5">
       <ion-buttons slot="start">
         <ion-button color="white" (click)="goTo('paarl-paarl')">
-          <ion-icon slot="icon-only" name="information-circle" size="large">
-          </ion-icon>
+          <ion-icon slot="icon-only" name="alert-circle-outline"> </ion-icon>
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="end">
         <ion-button color="white" (click)="share()">
-          <ion-icon slot="icon-only" name="share-social" size="large">
-          </ion-icon>
+          <ion-icon slot="icon-only" name="share-social-outline"> </ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </div>
   <ion-toolbar color="primary">
-    <ion-title>Paarl Tourism</ion-title>
+    <ion-title>Tulbagh Tourism</ion-title>
   </ion-toolbar>
   <app-accordion
     [blogs]="blogs"

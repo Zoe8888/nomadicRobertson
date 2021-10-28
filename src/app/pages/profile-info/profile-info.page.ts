@@ -31,7 +31,7 @@ export class ProfileInfoPage implements OnInit {
     minZoom: 5,
     zoom: 12,
     maxZoom: 15,
-    center: latLng(-33.715546, 18.966248),
+    center: latLng(-33.288809, 19.13855),
     scrollWheelZoom: false,
     tap: false,
     zoomControl: false,

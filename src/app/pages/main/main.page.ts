@@ -5,7 +5,7 @@ import { IonicSwiper } from '@ionic/core';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
 import { EventQuery, EventService } from 'src/app/stores/event';
-import { PaarlService } from 'src/app/stores/paarl';
+import { TulbaghService } from 'src/app/stores/tulbagh';
 import { PhotoQuery, PhotoService } from 'src/app/stores/photo';
 import Swal from 'sweetalert2';
 import SwiperCore from 'swiper';
@@ -24,7 +24,7 @@ export class MainPage implements OnInit {
   photos: any;
 
   constructor(
-    private paarlService: PaarlService,
+    private tulbaghService: TulbaghService,
     public blogQuery: BlogQuery,
     private blogService: BlogService,
     private eventService: EventService,
@@ -34,15 +34,15 @@ export class MainPage implements OnInit {
     private navCtrl: NavController
   ) {
     this.blogQuery
-      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'paarl-paarl' })
+      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
       .subscribe((blogs) => (this.blogs = blogs));
 
     this.eventQuery
-      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'paarl-paarl' })
+      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
       .subscribe((events) => (this.events = events));
 
     this.photoQuery
-      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'paarl-paarl' })
+      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
       .subscribe((photos) => {
         this.photos = photos;
       });
@@ -51,18 +51,18 @@ export class MainPage implements OnInit {
   ngOnInit() {}
 
   async ionViewWillEnter() {
-    await this.paarlService.getAbout();
+    await this.tulbaghService.getAbout();
     await this.blogService.getList();
     await this.eventService.getList();
     await this.photoService.getPhotoList();
   }
 
   async showAbout() {
-    await this.paarlService.showAbout();
+    await this.tulbaghService.showAbout();
   }
 
   async getInfo() {
-    const { html } = await this.paarlService.getInfo();
+    const { html } = await this.tulbaghService.getInfo();
     if (html) {
       Swal.fire({
         title: 'Information',
@@ -93,7 +93,7 @@ export class MainPage implements OnInit {
 
   async share() {
     await Share.share({
-      title: 'See cool stuff from Paarl',
+      title: 'See cool stuff from Tulbagh',
       text: 'Really awesome thing you need to see right meow',
       url: 'https://nomadicways.travel/',
       dialogTitle: 'Share with buddies',

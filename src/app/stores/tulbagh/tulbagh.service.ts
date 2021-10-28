@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import Swal from 'sweetalert2';
-import { PaarlQuery } from './paarl.query';
-import { PaarlStore } from './paarl.store';
+import { TulbaghQuery } from './tulbagh.query';
+import { TulbaghStore } from './tulbagh.store';
 
 @Injectable({ providedIn: 'root' })
-export class PaarlService {
+export class TulbaghService {
   constructor(
-    private paarlStore: PaarlStore,
+    private tulbaghStore: TulbaghStore,
     private http: HttpService,
-    private paarlQuery: PaarlQuery
+    private tulbaghQuery: TulbaghQuery
   ) {}
 
   async getAbout() {
     return await this.http
       .request('GET', 'wiki', {
-        profile: 'paarl-paarl',
-        subject: 'About Paarl',
+        profile: 'tulbagh-tourism-tulbagh',
+        subject: 'About Tulbagh',
         format: 'json',
       })
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
-          this.paarlStore.update({ about: result[0].objectList[0] });
+          this.tulbaghStore.update({ about: result[0].objectList[0] });
         }
       });
   }
@@ -29,7 +29,7 @@ export class PaarlService {
   async getInfo() {
     return await this.http
       .request('GET', 'show', {
-        uniqueId: 'paarl-paarl',
+        uniqueId: 'tulbagh-tourism-tulbagh',
         format: 'json',
       })
       .then((result) => result[0]?.objectList[0]);
@@ -37,9 +37,9 @@ export class PaarlService {
 
   async showAbout() {
     await this.getAbout();
-    const { about }: any = this.paarlQuery.getValue();
+    const { about }: any = this.tulbaghQuery.getValue();
     Swal.fire({
-      title: 'About Paarl',
+      title: 'About Tulbagh',
       html: about?.html,
       background: 'var(--ion-color-primary)',
       customClass: {

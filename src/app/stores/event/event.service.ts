@@ -6,7 +6,7 @@ import { EventStore } from './event.store';
 export class EventService {
   constructor(private eventStore: EventStore, private http: HttpService) {}
 
-  async getList(profile = 'paarl-paarl') {
+  async getList(profile = 'tulbagh-tourism-tulbagh') {
     return await this.http
       .request('GET', 'eventList', {
         profile,

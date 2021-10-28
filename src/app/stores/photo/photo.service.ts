@@ -6,7 +6,7 @@ import { PhotoStore } from './photo.store';
 export class PhotoService {
   constructor(private photoStore: PhotoStore, private http: HttpService) {}
 
-  async getPhotoList(profile = 'paarl-paarl') {
+  async getPhotoList(profile = 'tulbagh-tourism-tulbagh') {
     await this.http
       .request('GET', 'photoList', { profile, format: 'json' })
       .then((result) => {

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 
-export interface PaarlState {
+export interface TulbaghState {
   about: string;
 }
 
-export const createInitialState = (): PaarlState => ({
+export const createInitialState = (): TulbaghState => ({
   about: '',
 });
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'paarl' })
-export class PaarlStore extends Store<PaarlState> {
+@StoreConfig({ name: 'tulbagh' })
+export class TulbaghStore extends Store<TulbaghState> {
   constructor() {
     super(createInitialState());
   }

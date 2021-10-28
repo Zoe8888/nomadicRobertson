@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
-import { PaarlService } from 'src/app/stores/paarl';
+import { TulbaghService } from 'src/app/stores/tulbagh';
 import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
 import { BusinessSearchPage } from '../business-search/business-search.page';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
@@ -27,7 +27,7 @@ export class DiscoverPage implements OnInit {
     private weatherService: WeatherService,
     private blogService: BlogService,
     public blogQuery: BlogQuery,
-    private paarlService: PaarlService
+    private tulbaghService: TulbaghService
   ) {}
 
   ngOnInit() {
@@ -61,7 +61,7 @@ export class DiscoverPage implements OnInit {
   }
 
   async showAbout() {
-    await this.paarlService.showAbout();
+    await this.tulbaghService.showAbout();
   }
 
   async showSearch() {

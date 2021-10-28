@@ -15,16 +15,16 @@ export class ProfileService {
 
   async getList(list: string) {
     return await this.http.request('GET', 'profileList', {
-      profile: 'paarl-paarl',
+      profile: 'tulbagh-tourism-tulbagh',
       list,
-      radius: '20000',
+      // radius: '20000',
       sort: 'alpha',
       items: '200',
       format: 'json',
     });
   }
 
-  async getInfo(uniqueId = 'paarl-paarl') {
+  async getInfo(uniqueId = 'tulbagh-tourism-tulbagh') {
     return await this.http
       .request('GET', 'show', {
         uniqueId,
@@ -37,7 +37,7 @@ export class ProfileService {
         }
       });
   }
-  async getWiki(profile = 'paarl-paarl') {
+  async getWiki(profile = 'tulbagh-tourism-tulbagh') {
     return await this.http
       .request('GET', 'wiki', {
         profile,

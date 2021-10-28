@@ -6,7 +6,7 @@ import { BlogStore } from './blog.store';
 export class BlogService {
   constructor(private blogStore: BlogStore, private http: HttpService) {}
 
-  async getList(profile = 'paarl-paarl') {
+  async getList(profile = 'tulbagh-tourism-tulbagh') {
     return await this.http
       .request('GET', 'blogList', {
         profile,

@@ -13,28 +13,28 @@ export class DiscoverGridComponent implements OnInit {
   groups = [
     [
       { title: 'Accommodation', icon: 'bed-outline' },
-      { title: 'Adventure', icon: 'bicycle-outline' },
+      { title: 'Food & Drinks', icon: 'fast-food-outline' },
     ],
     [
-      { title: 'Taste', icon: 'wine-outline' },
-      { title: 'Culture', icon: 'prism-outline' },
+      { title: 'Wineries', icon: 'wine-outline' },
+      { title: 'Activities', icon: 'bicycle-outline' },
     ],
     [
-      { title: 'Explore', icon: 'telescope-outline' },
-      { title: 'Eat', icon: 'fast-food-outline' },
+      { title: 'Weddings', icon: 'heart-circle-outline' },
+      { title: 'Businesses', icon: 'business-outline' },
     ],
     [
-      { title: 'Family', icon: 'people-outline' },
-      { title: 'Shopping', icon: 'cart-outline' },
+      { title: 'Places of Interest', icon: 'telescope-outline' },
+      { title: 'Interesting events', icon: 'sparkles-outline' },
     ],
-    [
-      { title: 'Wellness', icon: 'heart-circle-outline' },
-      { title: 'Tours', icon: 'map-outline' },
-    ],
-    [
-      { title: 'Venues', icon: 'business-outline' },
-      { title: 'More', icon: 'sparkles-outline' },
-    ],
+    //[
+    //   { title: 'Wellness', icon: 'heart-circle-outline' },
+    //   { title: 'Tours', icon: 'map-outline' },
+    // ],
+    // [
+    //   { title: 'Venues', icon: 'business-outline' },
+    //   { title: 'More', icon: 'sparkles-outline' },
+    // ],
   ];
   constructor(private navCtrl: NavController) {}
 
