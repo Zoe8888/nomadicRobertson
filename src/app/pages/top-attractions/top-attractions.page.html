@@ -20,7 +20,7 @@
             </ion-item>
 
             <div slot="content" class="bg-primary p-2">
-              <ion-card class="p-2 m-0">
+              <ion-card class="p-2 m-0" (click)="goTo(item)">
                 <ion-img [src]="item?.image200Url"></ion-img>
                 {{item?.description}}
               </ion-card>

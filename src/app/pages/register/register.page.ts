@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { NavController } from '@ionic/angular';
 import { UserQuery, UserService } from 'src/app/stores/user';
 import { Router } from '@angular/router';
-// import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
+  alertController: any;
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,
@@ -44,10 +44,23 @@ export class RegisterPage implements OnInit {
     return this.registerForm.controls;
   }
 
+  presentAlert(errorText) {
+    this.alertController.create({
+      // header: 'Alert',
+      subHeader: 'Error registering',
+      message: errorText,
+      buttons: ['OK']
+    }).then(res => {
+
+      res.present();
+
+    });
+  }
+
   async onSubmit() {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.invalid) {
-      console.log('i am here');
+      this.presentAlert('Invalid credentials');
       return;
     }
     await this.userService
