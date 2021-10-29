@@ -4,21 +4,26 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Login</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content force-overscroll="false" color="primary">
+<ion-content force-overscroll="false" color="white">
   <ion-grid class="h-full">
     <ion-row class="h-full ion-justify-content-center content-evenly">
       <ion-col size="12" size-md="6" size-lg="5">
         <div class="ion-text-center">
-          <img src="assets/img/index-removebg-preview.png" class="m-auto" />
+          <img src="assets/img/logo.png" class="m-auto" />
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-          <ion-input type="email" formControlName="email" placeholder="Email">
+          <ion-input class="input" type="email" formControlName="email" placeholder="Email">
           </ion-input>
 
-          <ion-input
+          <ion-input class="input"
             type="password"
             formControlName="password"
             placeholder="Password"
@@ -28,7 +33,7 @@
           <ion-button
             type="submit"
             expand="block"
-            color="white"
+            color="primary"
             class="ion-margin-top mx-0 my-5"
           >
             <ion-spinner
