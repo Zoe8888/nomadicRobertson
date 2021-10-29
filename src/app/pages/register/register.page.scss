@@ -1,56 +1,56 @@
+ion-content {
+  background-color: white;
+}
 
-  .logo_img {
-    width: 60%;
-    height: 180px;
-    object-fit: cover;
-    margin-top: 20px;
-  }
-  ion-button {
-      width: 80%;
-  }
+.logo_img {
+  width: 60%;
+  height: 35vh;
+  object-fit: cover;
+}
 
-  .noAcc {
-    font-size: 0.9rem;
-  }
+ion-button {
+  width: 100%;
+}
 
-  .noAcc span {
-    font-weight: 700;
-  }
+.noAcc {
+  font-size: 0.9rem;
+}
 
+.noAcc span {
+  font-weight: 700;
+}
 
-  ion-content {
-    --ion-background-color: #78B1F5;
-  }
-
-.logo_img, .register_btn, .footer{
+.logo_img, .register_btn {
     width: 100%;
-    // background: #50c8ff;
     display: flex;
     justify-content: center;
 }
-.all_content{
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all_content,
+p {
     display: flex;
     justify-content: center;
 }
+
 .register_form{
     margin: 10px;
     padding: 20px;
-    margin-top: 10px;
 }
+
 .input_form{
-    border-radius: 10px;
-    background: white;
+    border-radius: 20px;
+    border: 2px solid #174060;
     --placeholder-color:black;
     padding-left: 10px;
     color: black;
     --padding-start: 5px;
 }
-
-// .loginInput {
-//   border-radius: 10px;
-//   background: white;
-//   --placeholder-color: black;
-// }
 
 ::placeholder{
     color: black;
