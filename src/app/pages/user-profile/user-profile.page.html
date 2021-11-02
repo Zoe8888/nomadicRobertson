@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar  class="ion-text-center" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-label>My Profile</ion-label>
     <ion-buttons slot="end">
       <ion-button>
@@ -13,88 +16,29 @@
   <ion-grid class="ion-padding-top">
     <ion-row>
       <ion-col class="ion-text-center">
-        <img
-          class="prof_img"
-          [src]="userQuery.avatar | async"
-        />
-        <ion-menu-toggle *ngIf="userQuery.isGuest | async; else isIn">
-          <ion-button color="warning"  routerLink="login"
-            >Login
-          </ion-button>
-        </ion-menu-toggle>
-        <ng-template #isIn
-          ><h2>{{ userQuery.userName | async }}</h2></ng-template
-        >
-        <h4>{{ username }}</h4>
-        <ion-label class="label_liked">My Likes (0)<hr></ion-label>
-        <ion-card class="card_images">
+        <div class="prof_img">
           <img
-            src="https://back.3blmedia.com/sites/default/files/styles/ratio_3_2/public/triplepundit/wide/Mighty%20buildings%203D%20prefab%20homes.jpeg"
+            [src]="userQuery.avatar | async"
           />
-          <!-- <div class="card_label">
-            <ion-label>triple pundit</ion-label>
-          </div> -->
-        </ion-card>
-        <ion-card class="card_images">
-          <img
-            src="https://back.3blmedia.com/sites/default/files/styles/ratio_3_2/public/triplepundit/wide/Mighty%20buildings%203D%20prefab%20homes.jpeg"
-          />
-          <!-- <div class="card_label">
-            <ion-label>triple pundit</ion-label>
-          </div> -->
-        </ion-card>
+        </div>
+        <h1>{{ fullname }}</h1>
+        <h6>{{ username }}</h6>
       </ion-col>
     </ion-row>
   </ion-grid>
+  <h5 class="label_liked" width="100%">My Likes ({{ liked }})
+    <hr style="border: none;">
+  </h5>
+  <div *ngFor="let profile of likedQuery.list | async">
+    <ion-card class="card_images" (click)="goTo(profile)">
+      <img [src]="profile?.image200Url"/>
+      <ion-label>{{profile?.title}}</ion-label>
+    </ion-card>
+  </div>
   <div class="sout_btn">
     <ion-button color="primary">
-      <ion-label class="label_btn">Sign Out</ion-label>
+      <ion-label class="label_btn" (click)="logout()">Sign Out</ion-label>
       <ion-icon name="log-out-outline"></ion-icon>
     </ion-button>
   </div>
 </ion-content>
-
-
-<!-- <ion-content color="secondary">
-  <div class="prof_img">
-    <img [src]="userQuery.avatar | async"/>
-    <ion-icon name="create-outline" slot="end" vertical="end" size="large"></ion-icon>
-  </div>
-  <div class="user_details">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ng-template #isIn
-          ><h5>{{ userQuery.userName | async }}</h5></ng-template
-        >
-        <h4
-        >{{ username }}</h4>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <ion-label>My Likes (2)<hr></ion-label>
-  <ion-card class="card_images">
-    <img
-      src="https://back.3blmedia.com/sites/default/files/styles/ratio_3_2/public/triplepundit/wide/Mighty%20buildings%203D%20prefab%20homes.jpeg"
-    />
-    <div class="card_label">
-      <ion-label>triple pundit</ion-label>
-    </div>
-  </ion-card>
-  <ion-card class="card_images">
-    <img
-      src="https://back.3blmedia.com/sites/default/files/styles/ratio_3_2/public/triplepundit/wide/Mighty%20buildings%203D%20prefab%20homes.jpeg"
-    />
-    <div class="card_label">
-      <ion-label>triple pundit</ion-label>
-    </div>
-  </ion-card>
-    <div class="sout_btn">
-      <ion-button color="primary">
-        <ion-label class="label_btn">Sign Out</ion-label>
-        <ion-icon name="log-out-outline"></ion-icon>
-      </ion-button>
-    </div>
-
-</ion-content> -->

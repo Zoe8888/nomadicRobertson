@@ -1,4 +1,4 @@
-.prof_img{
+.prof_img img{
   border-radius: 50%;
   width: 230px;
   height: 230px;
@@ -6,6 +6,18 @@
 }
 .prof_img{
   margin-top: 30px;
+}
+.prof_img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hr{
+  height: 1px;
+  background-color: white;
+  width: 80%;
 }
 
 .label_liked{
@@ -28,6 +40,7 @@
 }
 .label_btn{
   color: white;
+  margin-right: 10px;
 }
 .sout_btn{
   display: flex;
@@ -39,6 +52,22 @@
   align-items: center;
   background: transparent;
 }
-.card_label {
+h5 {
   padding-left: 20px;
 }
+hr {
+  // opacity: 0.6;
+  width: 65%;
+  height: 1px;
+  margin-top: -10px;
+  // margin-right: auto;
+  margin-right: 20px;
+  background-color:white;
+}
+// h2{
+//   font-family: Georgia;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-size: 36px;
+//   line-height: 41px;
+// }
