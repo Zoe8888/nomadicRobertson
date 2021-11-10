@@ -1,7 +1,10 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
-    <ion-title>Promotions</ion-title>
+    <ion-title>What's Happening</ion-title>
     <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications"></ion-icon>
+      </ion-button>
       <ion-button>
         <ion-menu-button></ion-menu-button>
       </ion-button>
@@ -16,11 +19,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid *ngIf="promotionQuery.selectAll() | async as blogs">
-    <ion-row *ngFor="let blog of blogs">
+  <ion-grid *ngIf="promotionQuery.selectAll() | async as promotions">
+    <ion-row *ngFor="let promotion of promotions">
       <ion-col>
         <ion-card class="ion-no-margin">
-          <app-blog-item [blog]="blog" [color]="'primary'"></app-blog-item>
+          <ng-container *ngIf="promotion?.html">
+            <div
+            class="px-2"
+            [innerHTML]="promotion.html"
+            ></div>
+          </ng-container>
         </ion-card>
       </ion-col>
     </ion-row>

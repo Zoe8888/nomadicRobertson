@@ -8,6 +8,7 @@ import { PromotionQuery, PromotionService } from 'src/app/stores/promotion';
   styleUrls: ['./promotions.page.scss'],
 })
 export class PromotionsPage implements OnInit {
+  ready: boolean;
   constructor(
     private promotionService: PromotionService,
     public promotionQuery: PromotionQuery,
@@ -20,9 +21,7 @@ export class PromotionsPage implements OnInit {
     this.promotionService.getList();
   }
 
-  goTo(blog) {
-    this.navCtrl.navigateForward('blog-details', {
-      state: { blog },
-    });
+  ionViewDidEnter() {
+    this.ready = true;
   }
 }

@@ -6,7 +6,7 @@ export interface PromotionState extends EntityState<Promotion> {}
 
 @Injectable({ providedIn: 'root' })
 @StoreConfig({
-  name: 'promotion'
+  name: 'promotion', idKey: 'wikiId'
 })
 export class PromotionStore extends EntityStore<PromotionState> {
 
