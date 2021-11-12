@@ -23,6 +23,15 @@
 </ion-header>
 
 <ion-content>
+  <ion-label class="header">Businesses</ion-label><br>
+  <ion-chip>
+    <ion-icon name="funnel"></ion-icon>
+    <ion-label class="chip_label">Filter</ion-label>
+  </ion-chip>
+  <ion-chip>
+    <ion-icon name="filter"></ion-icon>
+    <ion-label class="chip_label">Sort</ion-label>
+  </ion-chip>
   <ion-grid>
     <ion-row *ngFor="let profile of likedQuery.list | async">
       <ion-col>

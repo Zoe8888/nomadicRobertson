@@ -85,4 +85,8 @@ export class DiscoverPage implements OnInit {
       state: { profile },
     });
   }
+
+  goToSOS(){
+    this.navCtrl.navigateForward('sos');
+  }
 }

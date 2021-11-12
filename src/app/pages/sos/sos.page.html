@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>sos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ng-container *ngFor="let item of list; even as isEven">
+      <ion-item
+        detail
+        color="primary"
+        [ngClass]="{'opacity-80': isEven}"
+        (click)="showDetails(item?.uniqueId)"
+      >
+        <ion-label> {{item?.title}} </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-item lines="none" color="danger" detail (click)="call(112)">
+    <ion-icon name="call" slot="start" size="large"></ion-icon>
+    <ion-label>
+      <h2 class="ion-text-uppercase font-bold">Emergency response</h2>
+      <p>Call 112 (FREE)</p>
+    </ion-label>
+  </ion-item>
+</ion-footer>
