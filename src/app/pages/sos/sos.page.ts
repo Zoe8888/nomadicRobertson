@@ -11,11 +11,11 @@ export class SosPage implements OnInit {
   groups = [
     [
       { title: 'SOS - Healthcare Professionals', icon: 'medical-outline' },
-      { title: 'SOS - Police Stations', icon: 'shield-outline' },
+      { title: 'SOS - Hospitals', icon: 'business-outline' },
     ],
     [
-      { title: 'SOS - Hospitals', icon: 'business-outline' },
-      { title: 'SOS - Pharmacies', icon: 'wine-outline' },
+      { title: 'SOS - Police Stations', icon: 'shield-outline' },
+      { title: 'SOS - Pharmacies', icon: 'medkit-outline' },
     ],
   ];
 

@@ -21,17 +21,19 @@
   <ion-label>
     <h1>Select a category:</h1>
   </ion-label>
-  <div *ngFor="let group of groups; let g = index">
-    <ion-grid>
-      <ion-row  *ngFor="let item of group; let i = index"
-      class="p-0 border-0 border-l border-black border-solid" [ngClass]="{ 'border-r-0': g === 2 }">
-        <ion-col (click)="goTo(item.title)"
-        [ngClass]="{ 'border-0 border-b border-black border-solid': !i }">
-          <ion-icon [name]="item.icon" size="large"></ion-icon>
-          <p>{{ item.title }}</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div class="gridContainer">
+    <div class="sosGrid" *ngFor="let group of groups; let g = index">
+      <ion-grid>
+        <ion-row *ngFor="let item of group; let i = index"
+        class="p-0 border-0 border-r border-black border-solid" [ngClass]="{ 'border-r-0': g === 1 }">
+          <ion-col (click)="goTo(item.title)"
+          [ngClass]="{ 'border-0 border-b border-black border-solid': !i }">
+            <ion-icon [name]="item.icon" size="large"></ion-icon>
+            <p>{{ item.title }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 </ion-content>
 
