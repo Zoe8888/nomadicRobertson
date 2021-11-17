@@ -1,0 +1,46 @@
+ion-label h1 {
+  display: flex;
+  justify-content: center;
+  margin: 10% 0;
+}
+
+.sosGrid {
+  width: 100%;
+}
+
+ion-grid {
+  display: flex;
+  justify-content: center;
+  margin: 0 2%;
+}
+
+ion-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  text-align: center;
+}
+
+ion-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+ion-label h2 {
+  font-size: 1.5rem;
+}
+
+.callBtn {
+  border-radius: 50px;
+  color: white;
+  background-color: rgb(207, 2, 2);
+  padding: 8%;
+  margin: 5% 0;
+}
+
+

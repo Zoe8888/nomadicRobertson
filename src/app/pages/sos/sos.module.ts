@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { IonicModule } from '@ionic/angular';
-
 import { SosPageRoutingModule } from './sos-routing.module';
-
 import { SosPage } from './sos.page';
 
 @NgModule({
@@ -13,7 +11,8 @@ import { SosPage } from './sos.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SosPageRoutingModule
+    SosPageRoutingModule,
+    SharedModule
   ],
   declarations: [SosPage]
 })

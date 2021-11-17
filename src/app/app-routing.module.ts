@@ -74,6 +74,10 @@ const routes: Routes = [
     path: 'sos',
     loadChildren: () => import('./pages/sos/sos.module').then( m => m.SosPageModule)
   },
+  {
+    path: 'sos-profiles',
+    loadChildren: () => import('./pages/sos-profiles/sos-profiles.module').then( m => m.SosProfilesPageModule)
+  },
 
 ];
 @NgModule({

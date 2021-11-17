@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ProfileService } from 'src/app/stores/profile';
-import Swal from 'sweetalert2';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sos',
@@ -9,32 +8,26 @@ import Swal from 'sweetalert2';
   styleUrls: ['./sos.page.scss'],
 })
 export class SosPage implements OnInit {
-  list: any[];
+  groups = [
+    [
+      { title: 'SOS - Healthcare Professionals', icon: 'medical-outline' },
+      { title: 'SOS - Police Stations', icon: 'shield-outline' },
+    ],
+    [
+      { title: 'SOS - Hospitals', icon: 'business-outline' },
+      { title: 'SOS - Pharmacies', icon: 'wine-outline' },
+    ],
+  ];
 
   constructor(
     private modalCtrl: ModalController,
-    private profileService: ProfileService
+    private navCtrl: NavController,
   ) {}
 
-  async ngOnInit() {
-    console.log(this.profileService.getList('SOS'));
-    await this.profileService.getList('SOS').then((result) => {
-      this.list = result?.[0].objectList;
-    });
-  }
-
-  async showDetails(profile) {
-    await this.profileService.getWiki(profile).then((result) => {
-      if (result?.html) {
-        Swal.fire({
-          html: result?.html,
-          showConfirmButton: false,
-          showCloseButton: true,
-          backdrop: true,
-          heightAuto: false,
-          allowOutsideClick: false,
-        });
-      }
+  ngOnInit() {}
+  goTo(business) {
+    this.navCtrl.navigateForward('sos-profiles', {
+      state: { business },
     });
   }
 

@@ -37,9 +37,9 @@ const routes: Routes = [
           import('../main/main.module').then((m) => m.MainPageModule),
       },
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full',
+        path: 'sos',
+        loadChildren: () =>
+          import('../sos/sos.module').then((m) => m.SosPageModule),
       },
     ],
   },

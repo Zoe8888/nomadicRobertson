@@ -1,35 +1,48 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="dismiss()">
-        <ion-icon name="close-circle-outline"></ion-icon>
+      <ion-button>
+        <ion-back-button></ion-back-button>
       </ion-button>
     </ion-buttons>
-    <ion-title>sos</ion-title>
+    <ion-title>SOS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="full">
-    <ng-container *ngFor="let item of list; even as isEven">
-      <ion-item
-        detail
-        color="primary"
-        [ngClass]="{'opacity-80': isEven}"
-        (click)="showDetails(item?.uniqueId)"
-      >
-        <ion-label> {{item?.title}} </ion-label>
-      </ion-item>
-    </ng-container>
-  </ion-list>
+  <ion-label>
+    <h1>Select a category:</h1>
+  </ion-label>
+  <div *ngFor="let group of groups; let g = index">
+    <ion-grid>
+      <ion-row  *ngFor="let item of group; let i = index"
+      class="p-0 border-0 border-l border-black border-solid" [ngClass]="{ 'border-r-0': g === 2 }">
+        <ion-col (click)="goTo(item.title)"
+        [ngClass]="{ 'border-0 border-b border-black border-solid': !i }">
+          <ion-icon [name]="item.icon" size="large"></ion-icon>
+          <p>{{ item.title }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
 
 <ion-footer>
-  <ion-item lines="none" color="danger" detail (click)="call(112)">
-    <ion-icon name="call" slot="start" size="large"></ion-icon>
     <ion-label>
       <h2 class="ion-text-uppercase font-bold">Emergency response</h2>
-      <p>Call 112 (FREE)</p>
     </ion-label>
-  </ion-item>
+    <ion-label>
+      <h4>Call 112 (FREE)</h4>
+    </ion-label>
+    <div class="callBtn" color="danger">
+      <ion-icon class="phone" name="call" size="large" (click)="call(112)"></ion-icon>
+    </div>
 </ion-footer>

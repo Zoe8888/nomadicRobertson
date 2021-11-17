@@ -5,6 +5,7 @@ import { BlogItemComponent } from 'src/app/components/blog-item/blog-item.compon
 import { DiscoverGridComponent } from 'src/app/components/discover-grid/discover-grid.component';
 import { ProfileDetailsHeaderComponent } from 'src/app/components/profile-details-header/profile-details-header.component';
 import { SwiperModule } from 'swiper/angular';
+import { SosGridComponent } from 'src/app/components/sos-grid/sos-grid.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { SwiperModule } from 'swiper/angular';
     DiscoverGridComponent,
     ProfileDetailsHeaderComponent,
     AccordionComponent,
+    SosGridComponent
   ],
   imports: [CommonModule, SwiperModule],
   exports: [
@@ -20,6 +22,7 @@ import { SwiperModule } from 'swiper/angular';
     ProfileDetailsHeaderComponent,
     SwiperModule,
     AccordionComponent,
+    SosGridComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
