@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.connectmobiles24.tulbagh',
+  appId: 'za.co.indigo.tulbagh',
   appName: 'Tulbagh',
   webDir: 'www',
   bundledWebRuntime: false,
