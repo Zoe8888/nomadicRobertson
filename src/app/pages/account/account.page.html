@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{userQuery.userName | async}}</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button
+        *ngFor="let segment of ['Profile', 'Settings']"
+        [value]="segment"
+      >
+        <ion-label>{{segment}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="segment === 'Profile'">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-img [src]="userQuery?.avatar | async"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h1 class="!font-bold">{{followers}}</h1>
+        <p>Followers</p>
+      </ion-label>
+    </ion-item>
+
+    <div
+      class="mx-2"
+      *ngIf="wiki?.html"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(wiki?.html)"
+    ></div>
+  </ng-container>
+  <app-account-settings *ngIf="segment === 'Settings'"></app-account-settings>
+</ion-content>

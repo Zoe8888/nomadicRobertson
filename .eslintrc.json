@@ -13,6 +13,7 @@
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "plugins": ["prefer-arrow-functions"],
       "rules": {
         "@angular-eslint/component-class-suffix": [
           "error",
@@ -53,6 +54,15 @@
           {
             "selector": "property",
             "format": ["camelCase", "snake_case", "PascalCase"]
+          }
+        ],
+        "prefer-arrow-functions/prefer-arrow-functions": [
+          "warn",
+          {
+            "classPropertiesAllowed": false,
+            "disallowPrototype": false,
+            "returnStyle": "unchanged",
+            "singleReturnOnly": false
           }
         ]
       }

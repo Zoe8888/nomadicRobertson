@@ -5,7 +5,9 @@ import { BlogItemComponent } from 'src/app/components/blog-item/blog-item.compon
 import { DiscoverGridComponent } from 'src/app/components/discover-grid/discover-grid.component';
 import { ProfileDetailsHeaderComponent } from 'src/app/components/profile-details-header/profile-details-header.component';
 import { SwiperModule } from 'swiper/angular';
-import { SosGridComponent } from 'src/app/components/sos-grid/sos-grid.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { SettingsComponent } from 'src/app/components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -13,16 +15,16 @@ import { SosGridComponent } from 'src/app/components/sos-grid/sos-grid.component
     DiscoverGridComponent,
     ProfileDetailsHeaderComponent,
     AccordionComponent,
-    SosGridComponent
+    SettingsComponent
   ],
-  imports: [CommonModule, SwiperModule],
+  imports: [CommonModule, IonicModule, SwiperModule, ReactiveFormsModule, FormsModule,],
   exports: [
     BlogItemComponent,
     DiscoverGridComponent,
     ProfileDetailsHeaderComponent,
     SwiperModule,
     AccordionComponent,
-    SosGridComponent
+    SettingsComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

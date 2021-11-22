@@ -10,12 +10,12 @@ import { NavController } from '@ionic/angular';
 export class SosPage implements OnInit {
   groups = [
     [
-      { title: 'SOS - Healthcare Professionals', icon: 'medical-outline' },
-      { title: 'SOS - Hospitals', icon: 'business-outline' },
+      { title: 'Healthcare Professionals', icon: 'medical-outline' },
+      { title: 'Hospitals', icon: 'business-outline' },
     ],
     [
-      { title: 'SOS - Police Stations', icon: 'shield-outline' },
-      { title: 'SOS - Pharmacies', icon: 'medkit-outline' },
+      { title: 'Police Stations', icon: 'shield-outline' },
+      { title: 'Pharmacies', icon: 'medkit-outline' },
     ],
   ];
 

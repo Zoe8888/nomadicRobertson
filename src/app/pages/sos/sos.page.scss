@@ -1,7 +1,7 @@
-ion-label h1 {
+ion-label h2 {
   display: flex;
   justify-content: center;
-  margin: 10% 0;
+  margin: 7% 0;
 }
 
 .gridContainer {
@@ -20,15 +20,16 @@ ion-col {
   margin: 0 -3%;
 }
 
-ion-footer {
+.emergency {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10%;
   gap: 10px;
 }
 
-ion-label h2 {
+ion-label h1 {
   font-size: 1.5rem;
 }
 
@@ -36,7 +37,7 @@ ion-label h2 {
   border-radius: 50px;
   color: white;
   background-color: rgb(207, 2, 2);
-  padding: 8%;
+  padding: 7%;
   margin: 5% 0;
 }
 

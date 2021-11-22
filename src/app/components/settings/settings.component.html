@@ -1,0 +1,79 @@
+<form class="h-full" [formGroup]="form" (submit)="saveChanges()">
+  <ion-list lines="full">
+    <ion-item-divider>
+      <ion-label> YOUR PROFILE </ion-label>
+    </ion-item-divider>
+    <ion-item-group>
+      <ion-item>
+        <ion-label position="inline">First Name</ion-label>
+        <ion-input slot="end" formControlName="firstName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="inline">Last Name</ion-label>
+        <ion-input slot="end" formControlName="lastName"></ion-input>
+      </ion-item>
+    </ion-item-group>
+    <ion-item>
+      <ion-label position="inline">Country</ion-label>
+      <ion-select formControlName="country">
+        <ion-select-option
+          *ngFor="let item of utilQuery.countries | async | keyvalue"
+          [value]="item.value?.country | uppercase"
+        >
+          {{ item.value?.country }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="inline">Postal/Zip Code</ion-label>
+      <ion-input slot="end" formControlName="postalCode"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea
+        rows="3"
+        placeholder="A few words about yourself..."
+        formControlName="description"
+      ></ion-textarea>
+    </ion-item>
+    <ion-item-divider>
+      <ion-label> PREFERENCES </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label position="inline">Receive daily updates via email</ion-label>
+      <ion-select
+        [interfaceOptions]="preferences.daily"
+        formControlName="emailDigest"
+      >
+        <ion-select-option value="true">Yes</ion-select-option>
+        <ion-select-option value="false">No</ion-select-option></ion-select
+      >
+    </ion-item>
+    <ion-item>
+      <ion-label position="inline">Receive important emails</ion-label>
+      <ion-select
+        [interfaceOptions]="preferences.important"
+        formControlName="emailOptIn"
+      >
+        <ion-select-option value="true">Yes</ion-select-option>
+        <ion-select-option value="false">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="inline">Your profile content</ion-label>
+      <ion-select formControlName="privacy">
+        <ion-select-option value="friends">Friends</ion-select-option>
+        <ion-select-option value="other users">Other Users</ion-select-option>
+        <ion-select-option value="everyone">Everyone</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- <ion-item-divider>
+      <ion-label> ACCOUNT SETTINGS </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label>Reset your password</ion-label>
+    </ion-item> -->
+  </ion-list>
+  <div class="p-3">
+    <ion-button expand="block" type="submit">Save</ion-button>
+  </div>
+</form>

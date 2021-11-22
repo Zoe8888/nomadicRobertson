@@ -19,7 +19,7 @@
 
 <ion-content>
   <ion-label>
-    <h1>Select a category:</h1>
+    <h2>Select a category:</h2>
   </ion-label>
   <div class="gridContainer">
     <div class="sosGrid" *ngFor="let group of groups; let g = index">
@@ -35,11 +35,9 @@
       </ion-grid>
     </div>
   </div>
-</ion-content>
-
-<ion-footer>
+  <div class="emergency">
     <ion-label>
-      <h2 class="ion-text-uppercase font-bold">Emergency response</h2>
+      <h1 class="ion-text-uppercase font-bold">Emergency response</h1>
     </ion-label>
     <ion-label>
       <h4>Call 112 (FREE)</h4>
@@ -47,4 +45,5 @@
     <div class="callBtn" color="danger">
       <ion-icon class="phone" name="call" size="large" (click)="call(112)"></ion-icon>
     </div>
-</ion-footer>
+  </div>
+</ion-content>

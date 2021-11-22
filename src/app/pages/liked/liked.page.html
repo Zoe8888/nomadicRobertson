@@ -1,47 +1,38 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="primary">
+  <ion-toolbar class="ion-text-center" color="primary">
     <ion-title>Liked</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="notifications"></ion-icon>
-      </ion-button>
       <ion-button>
         <ion-menu-button></ion-menu-button>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <!-- <ion-toolbar>
-    <ion-chip slot="start">
-      <ion-icon name="funnel"></ion-icon>
-      <ion-label>Filter</ion-label>
-    </ion-chip>
-    <ion-chip slot="start">
-      <ion-icon name="swap-vertical"></ion-icon>
-      <ion-label>Sort</ion-label>
-    </ion-chip>
-  </ion-toolbar> -->
-</ion-header>
+</ion-header><br>
 
 <ion-content>
+
   <ion-label class="header">Businesses</ion-label><br>
-  <ion-chip>
+  <ion-chip (click)="popFilter($event)">
     <ion-icon name="funnel"></ion-icon>
     <ion-label class="chip_label">Filter</ion-label>
   </ion-chip>
-  <ion-chip>
+  <ion-chip (click)="popSort($event)">
     <ion-icon name="filter"></ion-icon>
     <ion-label class="chip_label">Sort</ion-label>
   </ion-chip>
+
   <ion-grid>
-    <ion-row *ngFor="let profile of likedQuery.list | async">
-      <ion-col>
-        <ion-card class="ion-no-margin" (click)="goTo(profile)">
-          <img [src]="profile?.image200Url" width="100%" />
-          <ion-item lines="none">
-            <ion-label>{{profile?.title}}</ion-label>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-row *ngFor="let profile of likedList">
+        <ion-col>
+          <ion-card class="ion-no-margin" (click)="goTo(profile)">
+            <img [src]="profile?.image200Url" width="100%" />
+            <ion-item lines="none">
+              <ion-label>{{profile?.title}}</ion-label>
+              <p slot="end">{{ profile?.distanceKm}}km</p>
+            </ion-item>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 </ion-content>

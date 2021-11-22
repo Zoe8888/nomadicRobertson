@@ -62,7 +62,8 @@ const routes: Routes = [
   {
     path: 'business-search',
     loadChildren: () => import('./pages/business-search/business-search.module').then( m => m.BusinessSearchPageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
@@ -77,6 +78,10 @@ const routes: Routes = [
   {
     path: 'sos-profiles',
     loadChildren: () => import('./pages/sos-profiles/sos-profiles.module').then( m => m.SosProfilesPageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
   },
 
 ];
