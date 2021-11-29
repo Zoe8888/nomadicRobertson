@@ -6,6 +6,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { icon, LatLng, latLng, Layer, marker, tileLayer } from 'leaflet';
 import { ProfileQuery, ProfileService } from 'src/app/stores/profile';
+import Swal from 'sweetalert2';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -105,5 +106,35 @@ export class ProfileInfoPage implements OnInit {
         Number(this.profile?.longitude),
       ]);
     }
+  }
+
+  async showDetails(profile) {
+    await this.profileService.getWiki(profile).then((result) => {
+      const doc = new DOMParser().parseFromString(result?.html, 'text/html');
+      const phone = doc.getElementById('phone');
+      const phoneNumber = phone?.innerHTML;
+      let newPhone = `<a href="tel:${phoneNumber}">${phoneNumber}</a>`;
+      if (phoneNumber.includes('/')) {
+        const parts = phoneNumber.split('/');
+        newPhone = parts
+          .map((part) => `<a href="tel:${part}">${part}</a>`)
+          .join(' <br/><br/> ');
+      }
+
+      const html = phone
+        ? result?.html.replace(phone?.outerHTML, newPhone)
+        : result?.html;
+
+      if (result?.html) {
+        Swal.fire({
+          html,
+          showConfirmButton: false,
+          showCloseButton: true,
+          backdrop: true,
+          heightAuto: false,
+          allowOutsideClick: false,
+        });
+      }
+    });
   }
 }

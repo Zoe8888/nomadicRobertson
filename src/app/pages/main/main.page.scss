@@ -6,7 +6,13 @@
   width: 100%;
 }
 
-.button {
-  background-color: #174060;
-  border-radius: 50px;
+ion-title {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
+
+// .button {
+//   background-color: #174060;
+//   border-radius: 50px;
+// }

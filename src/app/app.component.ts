@@ -28,10 +28,14 @@ export class AppComponent {
   ) {}
 
   async initApp() {
-    SplashScreen.show({ fadeInDuration: 50 });
+    SplashScreen.show({
+      fadeInDuration: 50,
+      showDuration: 3000,
+      autoHide: true,
+    });
     await this.platform.ready().then(() => {
       if (this.platform.is('capacitor')) {
-        SplashScreen.hide({ fadeOutDuration: 500 });
+        SplashScreen.hide({ fadeOutDuration: 1000 });
       }
     });
   }

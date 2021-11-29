@@ -14,10 +14,9 @@
 <ion-content class="register_form">
   <div class="logo_img">
     <img
-      src="assets/img/index-removebg-preview.png"
+      src="assets/img/logo.jpg"
     />
   </div>
-  <!--  -->
   <form class="register_form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <ion-input placeholder="First Name" type='text' class="input_form" formControlName="name"></ion-input>
     <br />
@@ -34,7 +33,10 @@
     </div>
   </form>
   <!-- nomadicways.travel -->
-  <p>Already have an account? <span routerLink="login">Login</span></p>
+  <p>
+    Already have an account?
+    <span routerLink="login" class="font-bold">Login</span>
+  </p>
 
   <ion-col size="12">
     <div class="footer">

@@ -47,7 +47,11 @@
         <ion-icon src="assets/img/sos.svg"></ion-icon>
       </ion-fab-button>
     </ion-fab>
-    <ion-img src="assets/img/tulbagh.jpg" class="banner"></ion-img>
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let e of [].constructor(5); let i = index">
+        <img [src]="'assets/discoverImages/discover'+(i+1)+ '.jpg'">
+      </ion-slide>
+    </ion-slides>
     <div class="w-full absolute -bottom-6 search">
       <ion-card class="m-2">
         <ion-item lines="none" button (click)="showSearch()">

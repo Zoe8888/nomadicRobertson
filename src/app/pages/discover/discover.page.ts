@@ -19,6 +19,14 @@ export class DiscoverPage implements OnInit {
     { name: 'wineries', items: [] },
   ];
   ready: boolean;
+
+  slideOpts = {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    }
+  };
+
   constructor(
     private modalCtrl: ModalController,
     private navCtrl: NavController,

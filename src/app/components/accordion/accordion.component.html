@@ -21,6 +21,9 @@
     </ion-item>
 
     <div slot="content" class="bg-primary">
+      <div class="gall_more">
+        <ion-button color="secondary" slot="end" (click)="goToImage(profile?.uniqueId)">See More</ion-button>
+      </div>
       <swiper [slidesPerView]="1.5" #photoSlides>
         <ng-template swiperSlide *ngFor="let photo of photos">
           <ion-grid>
@@ -41,6 +44,9 @@
     </ion-item>
 
     <div slot="content" class="bg-primary px-1">
+      <div class="gall_more">
+        <ion-button color="secondary" slot="end" (click)="goToEvents()">See More</ion-button>
+      </div>
       <swiper [slidesPerView]="1.5" #eventSlides>
         <ng-template swiperSlide *ngFor="let event of events">
           <ion-card class="mx-1 my-2" (click)="goToEvent(event)">

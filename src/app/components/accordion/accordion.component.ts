@@ -13,6 +13,7 @@ export class AccordionComponent implements OnInit {
   @Input() blogs: any;
   @Input() events: any;
   @Input() photos: any;
+  @Input() profile: any;
 
   constructor(private navCtrl: NavController) {}
 
@@ -33,6 +34,16 @@ export class AccordionComponent implements OnInit {
   goToEvent(event) {
     this.navCtrl.navigateForward('event-details', {
       state: { event },
+    });
+  }
+
+  goToEvents() {
+    this.navCtrl.navigateForward('events');
+  }
+
+  goToImage(uniqueId) {
+    this.navCtrl.navigateForward('gallery', {
+      state: { uniqueId },
     });
   }
 }

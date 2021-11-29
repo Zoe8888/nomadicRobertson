@@ -46,6 +46,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'events',
+    loadChildren: () =>
+      import('./pages/events/events.module').then(
+        (m) => m.EventsPageModule
+      ),
+  },
+  {
     path: 'event-details',
     loadChildren: () =>
       import('./pages/event-details/event-details.module').then(
@@ -83,6 +90,11 @@ const routes: Routes = [
     path: 'account',
     loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
   },
+  {
+    path: 'gallery',
+    loadChildren: () => import('./pages/gallery/gallery.module').then( m => m.GalleryPageModule)
+  },
+
 
 ];
 @NgModule({

@@ -9,6 +9,7 @@ import { TulbaghService } from 'src/app/stores/tulbagh';
 import { PhotoQuery, PhotoService } from 'src/app/stores/photo';
 import Swal from 'sweetalert2';
 import SwiperCore from 'swiper';
+import { Browser } from '@capacitor/browser';
 
 SwiperCore.use([IonicSwiper]);
 
@@ -22,6 +23,19 @@ export class MainPage implements OnInit {
   blogs: any;
   events: any;
   photos: any;
+
+  slideOpts = {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+    },
+  };
+
+  social = [
+    { name: 'facebook', url: 'https://www.facebook.com/Tulbaghwineandtourism/' },
+    { name: 'instagram', url: 'https://www.instagram.com/tulbagh/?hl=en' },
+    { name: 'twitter', url: 'https://twitter.com/tulbaghtourism?lang=en' },
+  ];
 
   constructor(
     private tulbaghService: TulbaghService,
@@ -89,6 +103,10 @@ export class MainPage implements OnInit {
     this.navCtrl.navigateForward('profile-info', {
       state: { uniqueId },
     });
+  }
+
+  async openLink(url) {
+    await Browser.open({ url, toolbarColor: '#174060' });
   }
 
   async share() {
