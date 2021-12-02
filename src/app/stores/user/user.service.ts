@@ -55,41 +55,17 @@ export class UserService {
     });
   }
 
-  async register(firstName, lastName, password, email) {
-    this.userStore.setLoading(true);
+  async signup(params: any) {
+    delete params.password_confirmation;
+    params.profile = 'tulbagh-tourism-tulbagh';
     return await this.http
       .request('POST', 'registration', {
-        firstName,
-        lastName,
-        password,
-        email,
+        ...params,
         format: 'json',
       })
-      .then(async (result) => {
-        if (result.method === 'GET'){
-          console.log('This is a GET method');
-        }
-        const username = email;
-        console.log(result[0].status.errorText);
-        if (result[0].status.errorText){
-          this.presentAlert(result[0].status.errorText);
-        }
-        // console.log(userName)
-        const ha1 = Md5.hashStr(
-          `${email}:${environment.realm}:${password}`
-          ).toString();
-          this.userStore.update({ username, ha1 });
-          console.log('Registration successful!');
-          console.log(email);
-      })
-      .catch((error) => {
-        this.userStore.reset();
-        console.log(error);
-        return false;
-      })
-      .finally(() => {
-        this.userStore.setLoading(false);
-      });
+      .then(
+        (result) => result[0].status.code === 0 && result[0].status.count === 1
+      );
   }
 
   async getInfo(uniqueId) {

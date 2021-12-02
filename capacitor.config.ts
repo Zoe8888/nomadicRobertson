@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'za.co.indigo.tulbagh',
-  appName: 'Tulbagh',
+  appName: 'Visit Tulbagh',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

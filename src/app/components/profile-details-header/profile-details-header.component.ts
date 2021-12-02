@@ -19,7 +19,7 @@ export class ProfileDetailsHeaderComponent implements OnInit {
 
   ngOnInit() {}
 
-  goTo(uniqueId) {
+  async goTo(uniqueId) {
     this.navCtrl.navigateForward('profile-info', {
       state: { uniqueId },
     });

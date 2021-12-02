@@ -12,7 +12,7 @@ import { MainPage } from './main.page';
     FormsModule,
     IonicModule,
     MainPageRoutingModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [MainPage],
 })

@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { NavController } from '@ionic/angular';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
+import { NavController, ToastController } from '@ionic/angular';
 import { UserQuery, UserService } from 'src/app/stores/user';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,18 +15,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  registerForm: FormGroup;
-  alertController: any;
+  signupForm: FormGroup;
+
   constructor(
     public formBuilder: FormBuilder,
     private userService: UserService,
     public userQuery: UserQuery,
     private navCtrl: NavController,
-    private router: Router
-  ) { }
+    private toastCtrl: ToastController
+  ) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
+      firstName: [
+        '',
+        Validators.compose([Validators.maxLength(100), Validators.required]),
+      ],
+      lastName: [
+        '',
+        Validators.compose([Validators.maxLength(100), Validators.required]),
+      ],
       email: [
         '',
         Validators.compose([
@@ -30,44 +43,52 @@ export class RegisterPage implements OnInit {
           Validators.email,
         ]),
       ],
-      password: [
+      password: ['', Validators.compose([Validators.required])],
+      password_confirmation: [
         '',
-        Validators.compose([Validators.minLength(6), Validators.required]),
+        Validators.compose([Validators.required, this.matchValues('password')]),
       ],
-      name:['', [Validators.required]],
-      surname:['', Validators.required],
-      confirmpassword:[''],
     });
   }
 
   get f() {
-    return this.registerForm.controls;
-  }
-
-  presentAlert(errorText) {
-    this.alertController.create({
-      // header: 'Alert',
-      subHeader: 'Error registering',
-      message: errorText,
-      buttons: ['OK']
-    }).then(res => {
-
-      res.present();
-
-    });
+    return this.signupForm.controls;
   }
 
   async onSubmit() {
-    this.registerForm.markAllAsTouched();
-    if (this.registerForm.invalid) {
-      this.presentAlert('Invalid credentials');
+    this.signupForm.markAllAsTouched();
+
+    if (this.signupForm.invalid) {
       return;
     }
+
     await this.userService
-    .register(this.f.name.value,this.f.surname.value, this.f.password.value, this.f.email.value)
-    .then(() => {
-        this.navCtrl.navigateBack('');
+      .signup(this.signupForm.getRawValue())
+      .then(async (success) => {
+        const toast = await this.toastCtrl.create({
+          icon: success ? 'checkmark-circle-outline' : 'close-circle-outline',
+          color: success ? 'success' : 'danger',
+          position: 'top',
+          message: success
+            ? 'Registration successful, a link was sent to the provided email address for verification'
+            : 'Something weird happened, please try again',
+          duration: 3000,
+        });
+
+        toast.present();
+
+        if (success) {
+          this.navCtrl.navigateBack('');
+        }
       });
   }
 
+  matchValues(matchTo: string): (AbstractControl) => ValidationErrors | null {
+    return (control: AbstractControl): ValidationErrors | null =>
+      !!control.parent &&
+      !!control.parent.value &&
+      control.value === control.parent.controls[matchTo].value
+        ? null
+        : { isMatching: false };
+  }
 }

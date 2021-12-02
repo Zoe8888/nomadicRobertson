@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoQuery, PhotoService } from 'src/app/stores/photo';
 import { BlogQuery, BlogService } from 'src/app/stores/blog';
-import { EventQuery, EventService } from 'src/app/stores/event';
+import { Router } from '@angular/router';
+import { ProfileQuery, ProfileService } from 'src/app/stores/profile';
 
 @Component({
   selector: 'app-gallery',
@@ -12,32 +13,44 @@ export class GalleryPage implements OnInit {
   photos: any;
   blogs: any;
   events: any;
+  profile: any;
 
   constructor(
     private photoService: PhotoService,
     private photoQuery: PhotoQuery,
     public blogQuery: BlogQuery,
-    private blogService: BlogService,
-    private eventService: EventService,
-    private eventQuery: EventQuery,
+    private router: Router,
+    private profileService: ProfileService,
+    private profileQuery: ProfileQuery
+
   ) {
-    this.photoQuery
-    .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
-    .subscribe((photos) => {
-      this.photos = photos;
-    });
-    this.blogQuery
-    .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
-    .subscribe((blogs) => (this.blogs = blogs));
-
-    this.eventQuery
-      .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
-      .subscribe((events) => (this.events = events));
-
-      console.log(this.photos);
+    // this.photoQuery
+    // .selectAll({ filterBy: (entity) => entity?.uniqueId === 'tulbagh-tourism-tulbagh' })
+    // .subscribe((photos) => {
+    //   this.photos = photos;
+    // });
   }
 
-  ngOnInit() {
+  // ngOnInit() {
+  // }
+
+  async ngOnInit() {
+    const { state } = this.router.getCurrentNavigation().extras;
+    this.profile = state.profile;
+    console.log(state.profile);
+
+    await this.profileService.getInfo(state.profile.uniqueId);
+    console.log(state.profile.uniqueId)
+
+    this.photoQuery
+    .selectAll({ filterBy: (entity) => entity?.uniqueId === this.profile.uniqueId })
+    .subscribe((photos) => (this.photos = photos));
+
+    console.log(this.photos);
+  }
+
+  async ionViewWillEnter() {
+    await this.photoService.getPhotoList(this.profile.uniqueId);
   }
 
 }

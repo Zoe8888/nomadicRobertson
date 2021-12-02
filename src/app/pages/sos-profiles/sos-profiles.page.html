@@ -24,7 +24,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" *ngFor="let profile of (searchProfiles ?? profiles)">
-        <ion-card class="ion-no-margin" (click)="goTo(profile.uniqueId)">
+        <ion-card class="ion-no-margin" (click)="showDetails(profile?.uniqueId)">
           <img [src]="profile?.image200Url" width="100%" />
           <ion-item lines="none">
             <ion-label class="ion-text-wrap">

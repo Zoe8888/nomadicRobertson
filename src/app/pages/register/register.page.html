@@ -17,25 +17,30 @@
       src="assets/img/logo.jpg"
     />
   </div>
-  <form class="register_form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <ion-input placeholder="First Name" type='text' class="input_form" formControlName="name"></ion-input>
+  <form class="register_form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <ion-input placeholder="First Name" type='text' class="input_form" formControlName="firstName"></ion-input>
     <br />
-      <ion-input placeholder="Last Name" type='text' class="input_form" formControlName="surname"></ion-input>
+      <ion-input placeholder="Last Name" type='text' class="input_form" formControlName="lastName"></ion-input>
     <br />
       <ion-input placeholder="Email" type='email' class="input_form" formControlName="email"></ion-input>
     <br />
       <ion-input placeholder="Password" type="password" class="input_form" formControlName="password"></ion-input>
     <br />
-      <ion-input placeholder="Confirm Password" type="password" class="input_form" formControlName="confirmpassword"></ion-input>
+      <ion-input placeholder="Confirm Password" type="password" class="input_form" formControlName="password_confirmation"></ion-input>
     <br />
     <div class="register_btn">
-      <ion-button type="submit">Register</ion-button>
+      <ion-button type="submit"><ion-spinner
+        color="dark"
+        *ngIf="userQuery.selectLoading() | async; else notLoading"
+      ></ion-spinner>
+      <ng-template #notLoading>Register</ng-template>
+    </ion-button>
     </div>
   </form>
   <!-- nomadicways.travel -->
   <p>
     Already have an account?
-    <span routerLink="login" class="font-bold">Login</span>
+    <span routerLink="/login" class="font-bold">Login</span>
   </p>
 
   <ion-col size="12">

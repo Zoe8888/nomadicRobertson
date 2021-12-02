@@ -4,6 +4,18 @@
   gap: 10px;
 }
 
+ion-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+ion-row {
+  display: flex;
+  justify-content: center;
+  width: 48vw;
+}
+
 ion-icon {
   margin-left: 6%;
 }
@@ -13,5 +25,7 @@ ion-label {
 }
 
 img {
-  border-radius: 20px;
+  border: 2px solid black;
 }
+
+

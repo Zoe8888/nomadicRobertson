@@ -2,3 +2,24 @@
   border-bottom: 1px solid #000;
   line-height: 0.1em;
 }
+
+.about {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+
+ion-toolbar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.toolbar-title {
+  display: flex !important;
+  justify-content: center;
+}
+
+.absolute {
+  z-index: 100;
+}

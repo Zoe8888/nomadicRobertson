@@ -20,8 +20,8 @@
   </div>
   <div class="gridContainer">
     <ion-grid>
-      <ion-row  *ngFor="let photo of photos">
-        <ion-col size="6">
+      <ion-row  *ngFor="let photo of photos" size="6">
+        <ion-col>
           <img [src]="photo?.mediumImageUrl">
         </ion-col>
       </ion-row>

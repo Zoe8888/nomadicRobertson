@@ -51,6 +51,8 @@
     "cordova-plugin-dialogs": "^2.0.2",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "leaflet": "^1.7.1",
+    "ngx-filesaver": "^12.0.0",
+    "ngx-lightbox": "^2.5.2",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.1.7",
     "swiper": "^6.8.4",
