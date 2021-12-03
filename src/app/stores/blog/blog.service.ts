@@ -8,7 +8,7 @@ export class BlogService {
 
   async getList(profile = 'tulbagh-tourism-tulbagh') {
     return await this.http
-      .request('GET', 'blogList', {
+      .request('GET', 'statusList', {
         profile,
         format: 'json',
       })
