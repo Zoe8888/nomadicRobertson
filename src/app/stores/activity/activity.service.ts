@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
-import { BlogStore } from './blog.store';
+import { ActivityStore } from './activity.store';
 
 @Injectable({ providedIn: 'root' })
-export class BlogService {
-  constructor(private blogStore: BlogStore, private http: HttpService) {}
+export class ActivityService {
+
+  constructor(private activityStore: ActivityStore, private http: HttpService) {
+  }
 
   async getList(profile = 'tulbagh-tourism-tulbagh') {
     return await this.http
-      .request('GET', 'blogList', {
+      .request('GET', 'statusList', {
         profile,
+        events: 'admin-entry' || 'user-entry' || 'blog' || 'event',
         format: 'json',
       })
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
-          this.blogStore.upsertMany(result[0].objectList);
-          this.blogStore.remove(
+          this.activityStore.upsertMany(result[0].objectList);
+          this.activityStore.remove(
             (entity) =>
               !result[0].objectList.some(
                 (newEntity) => newEntity.id === entity.id
@@ -25,14 +28,14 @@ export class BlogService {
       });
   }
 
-  async getBlog(id) {
-    await this.http
-      .request('GET', 'blog/' + id, {
+  getActivity(id) {
+    this.http
+      .request('GET', 'status/' + id, {
         format: 'json',
       })
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
-          this.blogStore.upsertMany(result[0].objectList);
+          this.activityStore.upsertMany(result[0].objectList);
         }
       });
   }

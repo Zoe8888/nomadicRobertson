@@ -7,6 +7,7 @@ import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
 import { BusinessSearchPage } from '../business-search/business-search.page';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
+import { ActivityQuery, ActivityService } from 'src/app/stores/activity';
 
 @Component({
   selector: 'app-discover',
@@ -33,8 +34,10 @@ export class DiscoverPage implements OnInit {
     public weather: WeatherQuery,
     private attractions: AttractionService,
     private weatherService: WeatherService,
-    private blogService: BlogService,
-    public blogQuery: BlogQuery,
+    // private blogService: BlogService,
+    // public blogQuery: BlogQuery,
+    public activityQuery: ActivityQuery,
+    private activityService: ActivityService,
     private tulbaghService: TulbaghService
   ) {}
 
@@ -44,7 +47,7 @@ export class DiscoverPage implements OnInit {
 
   ionViewWillEnter() {
     this.weatherService.getToday();
-    this.blogService.getList();
+    this.activityService.getList();
   }
 
   ionViewDidEnter() {

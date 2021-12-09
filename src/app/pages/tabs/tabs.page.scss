@@ -2,3 +2,9 @@ ion-label {
   font-size: 0.65rem;
   font-weight: 500;
 }
+
+@media screen and (max-width: 280px) {
+  ion-label {
+    font-size: 0.5rem;
+  }
+}

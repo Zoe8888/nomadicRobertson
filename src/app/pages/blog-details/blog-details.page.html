@@ -25,10 +25,10 @@
       [innerHTML]="sanitizer.bypassSecurityTrustHtml(blog.intro)"
     ></div>
   </ng-container>
-  <ng-container *ngIf="blog?.message">
+  <ng-container *ngIf="blog?.messageText ?? blog.message">
     <div
       class="px-2"
-      [innerHTML]="sanitizer.bypassSecurityTrustHtml(blog.message)"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(blog.messageText ?? blog.message)"
     ></div>
   </ng-container>
 </ion-content>

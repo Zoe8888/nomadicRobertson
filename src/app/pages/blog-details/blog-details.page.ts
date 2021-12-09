@@ -20,12 +20,16 @@ export class BlogDetailsPage implements OnInit {
     public sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     const { state } = this.router.getCurrentNavigation().extras;
     this.blog = state.blog;
-    this.blogService.getBlog(this.blog.id);
+    await this.blogService.getBlog(this.blog.id);
     this.blogQuery
       .selectEntity(this.blog.id)
-      .subscribe((blog) => (this.blog = blog));
+    .subscribe((blog) => {
+      if (blog) {
+        this.blog = blog
+      }
+      });
   }
 }

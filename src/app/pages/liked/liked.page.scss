@@ -1,17 +1,17 @@
+ion-title {
+  text-align: center;
+  margin-left: 25%;
+}
+
 img {
   width: 400px;
   height: 190.18px;
-  // border: 2px solid #C4C4C4;
   box-sizing: border-box;
-  border-radius: 20px;
 }
 
 ion-item{
-  // width: 400px;
-  // height: 40px;
   border: 2px solid #C4C4C4;
   box-sizing: border-box;
-  border-radius: 20px;
 }
 
 .header{
@@ -41,4 +41,28 @@ ion-chip{
   line-height: 16px;
   text-align: center;
   color: black;
+}
+
+@media screen and (max-width: 1280px){
+  ion-title {
+    margin-left: 0%;
+  }
+}
+
+@media screen and (max-width: 768px){
+  ion-title {
+    margin-left: 0%;
+  }
+}
+
+@media screen and (max-width: 760px){
+  ion-title {
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 280px){
+  ion-title {
+    margin-left: 30%;
+  }
 }

@@ -9,6 +9,8 @@ import { BlogItemComponent } from 'src/app/components/blog-item/blog-item.compon
 import { DiscoverGridComponent } from 'src/app/components/discover-grid/discover-grid.component';
 import { ProfileDetailsHeaderComponent } from 'src/app/components/profile-details-header/profile-details-header.component';
 import { SwiperModule } from 'swiper/angular';
+import { ActivityItemComponent } from 'src/app/components/activity-item/activity-item.component';
+
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { SwiperModule } from 'swiper/angular';
     ProfileDetailsHeaderComponent,
     AccordionComponent,
     SettingsComponent,
+    ActivityItemComponent
   ],
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { SwiperModule } from 'swiper/angular';
     SwiperModule,
     AccordionComponent,
     SettingsComponent,
+    ActivityItemComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

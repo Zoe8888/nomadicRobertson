@@ -24,12 +24,6 @@ export class EventService {
               )
           );
         }
-        // else {
-        //   const header = document.getElementsByClassName('header');
-        //   const p = document.createElement('p');
-        //   p.textContent = 'There are currently no upcoming events';
-        //   document.body.appendChild(p);
-        // }
       });
   }
 

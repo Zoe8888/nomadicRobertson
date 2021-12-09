@@ -3,7 +3,7 @@
     <ion-buttons slot="start" (click)="showAbout()">
       <ion-button class="about">About</ion-button>
     </ion-buttons>
-    <ion-title class="title">Discover</ion-title>
+    <ion-title>Discover</ion-title>
     <ion-buttons slot="end">
       <!-- <ion-button>
         <ion-icon name="notifications"></ion-icon>
@@ -74,10 +74,10 @@
     <span class="bg-white px-2.5">Keep up with Tulbagh</span>
   </h5>
   <ion-grid class="blogs">
-    <ion-row *ngFor="let blog of blogQuery.selectAll() | async as blogs">
+    <ion-row *ngFor="let activity of activityQuery.selectAll() | async as activities">
       <ion-col>
         <ion-card class="ion-no-margin">
-          <app-blog-item [blog]="blog" [color]="'primary'"></app-blog-item>
+          <app-activity-item [activity]="activity" [color]="'primary'"></app-activity-item>
         </ion-card>
       </ion-col>
     </ion-row>

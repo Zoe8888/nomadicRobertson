@@ -94,6 +94,11 @@ const routes: Routes = [
     path: 'gallery',
     loadChildren: () => import('./pages/gallery/gallery.module').then( m => m.GalleryPageModule)
   },
+  {
+    path: 'activity-details',
+    loadChildren: () => import('./pages/activity-details/activity-details.module').then( m => m.ActivityDetailsPageModule)
+  },
+
 
 
 ];

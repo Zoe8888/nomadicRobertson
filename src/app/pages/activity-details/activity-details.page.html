@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{activity?.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="m-2 mb-0">
+    <app-activity-item [activity]="activity" [color]="'primary'"></app-activity-item>
+  </ion-card>
+  <ng-container *ngIf="activity?.intro">
+    <div
+      class="px-2"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(activity.intro)"
+    ></div>
+  </ng-container>
+  <ng-container *ngIf="activity?.messageText">
+    <div
+      class="px-2"
+      [innerHTML]="sanitizer.bypassSecurityTrustHtml(activity.messageText)"
+    ></div>
+  </ng-container>
+</ion-content>
