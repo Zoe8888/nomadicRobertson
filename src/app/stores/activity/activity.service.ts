@@ -12,7 +12,7 @@ export class ActivityService {
     return await this.http
       .request('GET', 'statusList', {
         profile,
-        events: 'admin-entry' || 'user-entry' || 'blog' || 'event',
+        events: 'blog' || 'event',
         format: 'json',
       })
       .then((result) => {
@@ -35,7 +35,7 @@ export class ActivityService {
       })
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {
-          this.activityStore.upsertMany(result[0].objectList);
+          this.activityStore.upsertMany(result[0].objectList[0]);
         }
       });
   }

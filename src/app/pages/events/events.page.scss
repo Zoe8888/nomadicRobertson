@@ -4,29 +4,4 @@
 
 ion-title {
   text-align: center;
-  margin-left: 25%;
-}
-
-@media screen and (max-width: 1280px){
-  ion-title {
-    margin-left: 0%;
-  }
-}
-
-@media screen and (max-width: 768px){
-  ion-title {
-    margin-left: 0%;
-  }
-}
-
-@media screen and (max-width: 760px){
-  ion-title {
-    margin-left: 25%;
-  }
-}
-
-@media screen and (max-width: 280px){
-  ion-title {
-    margin-left: 30%;
-  }
 }

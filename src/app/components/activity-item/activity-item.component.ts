@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { BlogService } from 'src/app/stores/blog';
 
 @Component({
   selector: 'app-activity-item',
@@ -11,9 +12,11 @@ export class ActivityItemComponent implements OnInit {
   @Input() blog: any;
   @Input() color: any;
   type : any;
+  id: any;
 
   constructor(
     private navCtrl: NavController,
+    private blogService: BlogService
     ) {}
 
   ngOnInit() {}
