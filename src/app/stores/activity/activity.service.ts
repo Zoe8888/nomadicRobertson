@@ -12,7 +12,7 @@ export class ActivityService {
     return await this.http
       .request('GET', 'statusList', {
         profile,
-        events: 'blog' || 'event',
+        events: 'admin-entry' || 'user-entry' || 'blog' || 'event',
         format: 'json',
       })
       .then((result) => {
