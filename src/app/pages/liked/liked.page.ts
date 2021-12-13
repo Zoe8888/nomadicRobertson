@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, PopoverController, AlertController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { LikedQuery, LikedService } from 'src/app/stores/liked';
 
 @Component({
@@ -16,7 +16,6 @@ export class LikedPage implements OnInit {
     private likedService: LikedService,
     public likedQuery: LikedQuery,
     private navCtrl: NavController,
-    private popOverController: PopoverController,
     public alertCtrl: AlertController,
   ) {}
 

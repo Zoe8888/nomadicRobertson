@@ -69,6 +69,5 @@ export class BusinessInfoPage implements OnInit {
     await this.blogService.getList(this.profile.uniqueId);
     await this.eventService.getList(this.profile.uniqueId);
     await this.photoService.getPhotoList(this.profile.uniqueId);
-    console.log(this.profile.uniqueId)
   }
 }
