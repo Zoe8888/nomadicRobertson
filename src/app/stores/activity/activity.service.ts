@@ -8,11 +8,11 @@ export class ActivityService {
   constructor(private activityStore: ActivityStore, private http: HttpService) {
   }
 
-  async getList(profile = 'tulbagh-tourism-tulbagh') {
+  async getList(profile = 'robertson-tourism-robertson') {
     return await this.http
       .request('GET', 'statusList', {
         profile,
-        events: 'admin-entry' || 'user-entry' || 'blog' || 'event',
+        events: 'admin-entry,blog,user-entry',
         format: 'json',
       })
       .then((result) => {

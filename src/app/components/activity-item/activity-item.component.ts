@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { BlogService } from 'src/app/stores/blog';
+import { BlogQuery } from 'src/app/stores/blog';
 
 @Component({
   selector: 'app-activity-item',
@@ -9,28 +9,29 @@ import { BlogService } from 'src/app/stores/blog';
 })
 export class ActivityItemComponent implements OnInit {
   @Input() activity: any;
-  @Input() blog: any;
   @Input() color: any;
-  type : any;
-  id: any;
 
   constructor(
     private navCtrl: NavController,
-    private blogService: BlogService
+    private blogQuery: BlogQuery
     ) {}
 
   ngOnInit() {}
 
-  findType(result) {
-      let type = result.type === 'blog';
-      if (type) {
-          this.navCtrl.navigateForward('blog-details', {
-            state: { blog:result }
-          })
-      } else {
-          this.navCtrl.navigateForward('activity-details', {
-            state: { activity:result }
-          })
-      }
+  getType(result) {
+    let type = result.type === 'blog';
+    let typeId = result.typeId;
+    if (type) {
+      this.blogQuery.selectEntity(typeId).subscribe((blogResult) => {
+        this.navCtrl.navigateForward('blog-details', {
+          state: { blog:blogResult}
+        })
+        return;
+      })
+    } else {
+      this.navCtrl.navigateForward('activity-details', {
+        state: { activity:result }
+      })
+    } return;
   }
 }

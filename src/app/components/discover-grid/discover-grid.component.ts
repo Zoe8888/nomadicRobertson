@@ -20,8 +20,8 @@ export class DiscoverGridComponent implements OnInit {
       { title: 'Activities', icon: 'bicycle-outline' },
     ],
     [
-      { title: 'Weddings', icon: 'heart-circle-outline' },
-      { title: 'Businesses', icon: 'business-outline' },
+      { title: 'Wedding Venues', icon: 'heart-circle-outline' },
+      { title: 'Events', icon: 'calendar-number-outline' },
     ],
   ];
   constructor(private navCtrl: NavController) {}

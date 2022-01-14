@@ -13,8 +13,8 @@ export class WeatherService {
         'GET',
         'https://api.openweathermap.org/data/2.5/weather',
         {
-          lat: '-33.2872',
-          lon: '19.1434',
+          lat: '-33.8021',
+          lon: '19.8875',
           units: 'metric',
           appid: environment.opweather,
         },
@@ -33,8 +33,8 @@ export class WeatherService {
         'GET',
         'https://api.openweathermap.org/data/2.5/forecast/daily',
         {
-          lat: '-33.2872',
-          lon: '19.1434',
+          lat: '-33.8021',
+          lon: '19.8875',
           units: 'metric',
           cnt: '8',
           appid: environment.opweather,

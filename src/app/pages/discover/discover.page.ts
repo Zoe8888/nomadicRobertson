@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { AttractionService } from 'src/app/stores/attraction';
-import { BlogQuery, BlogService } from 'src/app/stores/blog';
-import { TulbaghService } from 'src/app/stores/tulbagh';
+import { RobertsonService } from 'src/app/stores/robertson';
 import { WeatherQuery, WeatherService } from 'src/app/stores/weather';
 import { BusinessSearchPage } from '../business-search/business-search.page';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
@@ -16,7 +15,7 @@ import { ActivityQuery, ActivityService } from 'src/app/stores/activity';
 })
 export class DiscoverPage implements OnInit {
   categories = [
-    { name: 'accomodations', items: [] },
+    { name: 'accomodation', items: [] },
     { name: 'wineries', items: [] },
   ];
   ready: boolean;
@@ -25,20 +24,17 @@ export class DiscoverPage implements OnInit {
     loop: true,
     autoplay: {
       delay: 3000,
-    }
+    },
   };
-
   constructor(
     private modalCtrl: ModalController,
     private navCtrl: NavController,
     public weather: WeatherQuery,
     private attractions: AttractionService,
     private weatherService: WeatherService,
-    // private blogService: BlogService,
-    // public blogQuery: BlogQuery,
+    private robertsonService: RobertsonService,
     public activityQuery: ActivityQuery,
     private activityService: ActivityService,
-    private tulbaghService: TulbaghService
   ) {}
 
   ngOnInit() {
@@ -48,6 +44,7 @@ export class DiscoverPage implements OnInit {
   ionViewWillEnter() {
     this.weatherService.getToday();
     this.activityService.getList();
+
   }
 
   ionViewDidEnter() {
@@ -72,7 +69,7 @@ export class DiscoverPage implements OnInit {
   }
 
   async showAbout() {
-    await this.tulbaghService.showAbout();
+    await this.robertsonService.showAbout();
   }
 
   async showSearch() {

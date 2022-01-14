@@ -25,11 +25,11 @@ export class BlogDetailsPage implements OnInit {
     this.blog = state.blog;
     await this.blogService.getBlog(this.blog.id);
     this.blogQuery
-      .selectEntity(this.blog.id)
+    .selectEntity(this.blog.id)
     .subscribe((blog) => {
       if (blog) {
         this.blog = blog
       }
-      });
+    });
   }
 }

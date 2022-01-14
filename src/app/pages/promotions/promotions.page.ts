@@ -21,7 +21,9 @@ export class PromotionsPage implements OnInit {
     this.promotionService.getList();
   }
 
-  ionViewDidEnter() {
-    this.ready = true;
+  goTo(blog) {
+    this.navCtrl.navigateForward('blog-details', {
+      state: { blog },
+    });
   }
 }

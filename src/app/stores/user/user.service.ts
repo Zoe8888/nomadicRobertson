@@ -57,7 +57,7 @@ export class UserService {
 
   async signup(params: any) {
     delete params.password_confirmation;
-    params.profile = 'tulbagh-tourism-tulbagh';
+    params.profile = 'robertson-tourism-robertson';
     return await this.http
       .request('POST', 'registration', {
         ...params,

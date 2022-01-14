@@ -11,11 +11,9 @@ export class PromotionService {
 
   async getList() {
     return await this.http
-      .request('GET', 'wiki', {
-        profile: 'tulbagh-tourism-tulbagh',
+      .request('GET', 'blogList', {
+        profile: 'robertson-promotions',
         format: 'json',
-        // eslint-disable-next-line @typescript-eslint/quotes
-        subject:"What's Happening",
       })
       .then((result) => {
         if (result[0]?.objectList?.length > 0) {

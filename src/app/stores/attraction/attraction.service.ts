@@ -12,9 +12,8 @@ export class AttractionService {
   async getTop() {
     return await this.http
       .request('GET', 'profileList', {
-        profile: 'tulbagh-tourism-tulbagh',
-        list: 'Top Attractions',
-        // radius: '20000',
+        profile: 'robertson-tourism-robertson',
+        list: 'Top 10 Attractions',
         sort: 'alpha',
         format: 'json',
       })

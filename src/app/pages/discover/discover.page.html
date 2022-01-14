@@ -1,13 +1,10 @@
 <ion-header class="ion-no-border">
   <ion-toolbar color="primary">
     <ion-buttons slot="start" (click)="showAbout()">
-      <ion-button class="about">About</ion-button>
+      <ion-button>About</ion-button>
     </ion-buttons>
     <ion-title>Discover</ion-title>
     <ion-buttons slot="end">
-      <!-- <ion-button>
-        <ion-icon name="notifications"></ion-icon>
-      </ion-button> -->
       <ion-button>
         <ion-menu-button></ion-menu-button>
       </ion-button>
@@ -17,7 +14,7 @@
 
 <ion-content>
   <div class="relative mb-6">
-    <ion-grid class="absolute" *ngIf="weather.today | async as today">
+    <ion-grid class="absolute z-10" *ngIf="weather.today | async as today">
       <ion-row>
         <ion-col size="auto">
           <ion-card
@@ -49,10 +46,10 @@
     </ion-fab>
     <ion-slides [options]="slideOpts">
       <ion-slide *ngFor="let e of [].constructor(5); let i = index">
-        <img [src]="'assets/img/discoverImages/discover'+(i+1)+ '.png'">
+        <img [src]="'assets/img/discoverImages/discover'+(i+1)+ '.png'" />
       </ion-slide>
     </ion-slides>
-    <div class="w-full absolute -bottom-6 search">
+    <div class="w-full absolute -bottom-7 z-10">
       <ion-card class="m-2">
         <ion-item lines="none" button (click)="showSearch()">
           <ion-icon name="search-outline" slot="start"></ion-icon>
@@ -66,14 +63,14 @@
     <app-discover-grid></app-discover-grid>
   </div>
   <div class="m-2">
-    <ion-button expand="block" (click)="showAttractions()" class="top">
-      TOP ATTRACTIONS
+    <ion-button expand="block" (click)="showAttractions()">
+      TOP 10 ATTRACTIONS
     </ion-button>
   </div>
   <h5 class="whatsnew w-full text-center">
-    <span class="bg-white px-2.5">Keep up with Tulbagh</span>
+    <span class="bg-white px-2.5">What's New</span>
   </h5>
-  <ion-grid class="blogs">
+  <ion-grid>
     <ion-row *ngFor="let activity of activityQuery.selectAll() | async as activities">
       <ion-col>
         <ion-card class="ion-no-margin">

@@ -9,7 +9,7 @@ export class LikedService {
   async getList() {
     return await this.http
       .request('GET', 'profileList', {
-        uniqueId: 'tulbagh-tourism-tulbagh',
+        uniqueId: 'robertson-tourism-robertson',
         view: 'mine',
         category: 'businesses',
         format: 'json',

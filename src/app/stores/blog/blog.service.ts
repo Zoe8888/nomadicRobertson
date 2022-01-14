@@ -6,7 +6,7 @@ import { BlogStore } from './blog.store';
 export class BlogService {
   constructor(private blogStore: BlogStore, private http: HttpService) {}
 
-  async getList(profile = 'tulbagh-tourism-tulbagh') {
+  async getList(profile = 'robertson-tourism-robertson') {
     return await this.http
       .request('GET', 'blogList', {
         profile,
@@ -39,7 +39,7 @@ export class BlogService {
 
   async getId(id: string) {
     return await this.http.request('GET', 'blogList', {
-      profile: 'tulbagh-tourism-tulbagh',
+      profile: 'robertson-tourism-robertson',
       id,
       format: 'json'
     })

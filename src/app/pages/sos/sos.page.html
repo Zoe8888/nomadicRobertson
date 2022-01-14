@@ -2,14 +2,11 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-button>
-        <ion-back-button></ion-back-button>
+       <ion-back-button></ion-back-button>
       </ion-button>
     </ion-buttons>
     <ion-title>SOS</ion-title>
     <ion-buttons slot="end">
-      <!-- <ion-button>
-        <ion-icon name="notifications"></ion-icon>
-      </ion-button> -->
       <ion-button>
         <ion-menu-button></ion-menu-button>
       </ion-button>
@@ -25,8 +22,8 @@
     <div class="sosGrid" *ngFor="let group of groups; let g = index">
       <ion-grid>
         <ion-row *ngFor="let item of group; let i = index"
-        class="p-0 border-0 border-r border-black border-solid" [ngClass]="{ 'border-r-0': g === 1 }">
-          <ion-col (click)="goTo(item.title)"
+        class="p-0 border-0 border-r border-black border-solid" [ngClass]="{ 'border-r-0': g === 2 }">
+          <ion-col class="{{item.id}}" (click)="goTo(item.title)"
           [ngClass]="{ 'border-0 border-b border-black border-solid': !i }">
             <ion-icon [name]="item.icon" size="large"></ion-icon>
             <p>{{ item.title }}</p>
