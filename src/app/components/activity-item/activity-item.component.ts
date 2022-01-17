@@ -19,8 +19,8 @@ export class ActivityItemComponent implements OnInit {
   ngOnInit() {}
 
   getType(result) {
-    let type = result.type === 'blog';
-    let typeId = result.typeId;
+    const type = result.type === 'blog';
+    const typeId = result.typeId;
     if (type) {
       const blogResult = this.blogQuery.getEntity(typeId)
       this.navCtrl.navigateForward('blog-details', {
