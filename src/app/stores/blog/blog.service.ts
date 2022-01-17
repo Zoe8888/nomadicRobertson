@@ -36,13 +36,4 @@ export class BlogService {
         }
       });
   }
-
-  async getId(id: string) {
-    return await this.http.request('GET', 'blogList', {
-      profile: 'robertson-tourism-robertson',
-      id,
-      format: 'json'
-    })
-    .then((result) => result[0]?.objectList[0]);
-  }
 }

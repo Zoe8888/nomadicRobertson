@@ -22,16 +22,14 @@ export class ActivityItemComponent implements OnInit {
     let type = result.type === 'blog';
     let typeId = result.typeId;
     if (type) {
-      this.blogQuery.selectEntity(typeId).subscribe((blogResult) => {
-        this.navCtrl.navigateForward('blog-details', {
-          state: { blog:blogResult}
-        })
-        return;
+      const blogResult = this.blogQuery.getEntity(typeId)
+      this.navCtrl.navigateForward('blog-details', {
+        state: { blog:blogResult}
       })
     } else {
       this.navCtrl.navigateForward('activity-details', {
         state: { activity:result }
       })
-    } return;
+    }
   }
 }

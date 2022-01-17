@@ -106,7 +106,7 @@ export class MainPage implements OnInit {
   }
 
   async openLink(url) {
-    await Browser.open({ url, toolbarColor: '#174060' });
+    await Browser.open({ url, toolbarColor: '#1EB82D' });
   }
 
   async share() {
