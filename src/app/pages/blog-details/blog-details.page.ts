@@ -18,18 +18,12 @@ export class BlogDetailsPage implements OnInit {
     private blogService: BlogService,
     public blogQuery: BlogQuery,
     public sanitizer: DomSanitizer
-  ) {this.anything()}
+  ) {}
 
   async ngOnInit() {
-
-  }
-
-  async anything() {
     const { state } = this.router.getCurrentNavigation().extras;
     this.blog = state.blog;
-    console.log(state)
     await this.blogService.getBlog(this.blog.id);
-    console.log(this.blog.id);
     this.blogQuery
     .selectEntity(this.blog.id)
     .subscribe((blog) => {

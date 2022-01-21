@@ -23,12 +23,8 @@ export class ActivityItemComponent implements OnInit {
   getType(result) {
     const type = result.type === 'blog';
     const typeId = result.typeId;
-    console.log(result)
     if (type) {
-      const siyanda = this.blogQuery.getAll()
-      console.log(siyanda)
       const blogResult = this.blogQuery.getEntity(typeId)
-      console.log(blogResult)
         this.navCtrl.navigateForward('blog-details', {
           state: { blog:blogResult }
         })
