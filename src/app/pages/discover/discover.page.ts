@@ -7,7 +7,7 @@ import { BusinessSearchPage } from '../business-search/business-search.page';
 import { TopAttractionsPage } from '../top-attractions/top-attractions.page';
 import { WeatherPage } from '../weather/weather.page';
 import { ActivityQuery, ActivityService } from 'src/app/stores/activity';
-
+import { BlogService } from 'src/app/stores/blog';
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.page.html',
@@ -35,6 +35,7 @@ export class DiscoverPage implements OnInit {
     private robertsonService: RobertsonService,
     public activityQuery: ActivityQuery,
     private activityService: ActivityService,
+    private blogService: BlogService,
   ) {}
 
   ngOnInit() {
@@ -44,7 +45,7 @@ export class DiscoverPage implements OnInit {
   ionViewWillEnter() {
     this.weatherService.getToday();
     this.activityService.getList();
-
+    this.blogService.getList();
   }
 
   ionViewDidEnter() {
